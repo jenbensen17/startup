@@ -59,7 +59,7 @@ I am going to use the required technologies in the following ways.
     - retreiving workouts
     - liking and commenting on a workout
 - **DB/Login** - Store users, workouts, likes, and comments. Register and login users. Store data securely. Cannot access website unless an account is created.
-- **WebSocket** - When likes or comments are posted, all users receive data.
+- **WebSocket** - When likes or comments are posted, all users receive updates.
 
 ## 🚀 AWS deliverable
 
