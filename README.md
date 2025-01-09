@@ -32,7 +32,7 @@ sequenceDiagram
     actor You
     actor Joe
     actor Max
-    User->>Server: Log workout
+    You->>Server: Log workout
     Joe->>Server: Like and Comment on Workout
     Server -->>You: Joe liked and commented
 ```
