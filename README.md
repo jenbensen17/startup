@@ -68,15 +68,15 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] **HTML pages** - Three HTML pages that represent the ability to login, view, comment, and like workouts, and log new workouts.
+- [x] **Proper HTML element usage** - Correctly used HTML tags including BODY, NAV, MAIN, HEADER, FOOTER.
+- [x] **Links** - Nav menu that links between all pages. Button on dashboard that links to the log workout page.
+- [x] **Text** - Text represents a logged workout and comments from other users.
+- [x] **3rd party API placeholder** - The 'Add Exercise' button represents the call to the 3rd party source of exercises.
+- [x] **Images** - Included a favicon, main page image, and images next to exercises.
+- [x] **Login placeholder** - Form representing a login and register function.
+- [x] **DB data placeholder** - The logged workout represents data pulled from the database.
+- [x] **WebSocket placeholder** - The comments and likes represent the realtime interaction of other users.
 
 ## 🚀 CSS deliverable
 
