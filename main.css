@@ -5,4 +5,38 @@
 
 body {
     font-family: 'OCR', sans-serif;
+    background-color: #121212;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    min-width: 375px;
+
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+nav menu {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+}
+nav menu li {
+    margin-left: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    color: inherit;
+}
+
+a:hover {
+    color:red;
 }
