@@ -63,6 +63,14 @@ a:hover {
 }
 
 @media (max-width: 600px) {
+    header {
+        justify-content: center;
+    }
+    
+    nav menu {
+        justify-content: center;
+    }
+    
     .logo {
         display: none;
     }
