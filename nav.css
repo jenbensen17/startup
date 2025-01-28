@@ -13,17 +13,38 @@ body {
 
 }
 
+
 header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+
+}
+
+h1 {
+    margin-left: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+
+}
+
+.logo-img {
+    width: auto;
+    height: 40px;
 }
 
 nav menu {
     list-style: none;
     display: flex;
     justify-content: flex-end;
+
+
 }
 nav menu li {
     margin-left: 20px;
