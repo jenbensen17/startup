@@ -1,63 +1,30 @@
-@font-face {
-    font-family: 'OCR';
-    src: url(./OCR-a___.ttf);
-}
-
-body {
-    font-family: 'OCR', sans-serif;
-    background-color: #121212;
-    color: white;
+main {
     display: flex;
     flex-direction: column;
-    min-width: 375px;
-
-}
-
-
-header {
-    display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    white-space: nowrap;
-    flex-wrap: nowrap;
-
+    justify-content: center;
+    text-align: center;
+    width: 100%;
 }
 
-h1 {
-    margin-left: 20px;
+main h1 {
+    margin-bottom: 20px;
+    margin-left: 0px;
+    
 }
 
-.logo {
+form {
+    background-color: #1e1e1e;
+    padding: 20px 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
     display: flex;
-    align-items: center;
-
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 15px;
 }
 
-.logo-img {
-    width: auto;
-    height: 40px;
-}
-
-nav menu {
-    list-style: none;
-    display: flex;
-    justify-content: flex-end;
-
-
-}
-nav menu li {
-    margin-left: 20px;
-}
-
-a {
-    text-decoration: none;
-}
-
-a:visited {
-    color: inherit;
-}
-
-a:hover {
-    color:red;
+.login {
+    margin-bottom: 5px;
 }
