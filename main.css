@@ -23,6 +23,7 @@ form {
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    margin-bottom: 15px;
 }
 
 .login {
@@ -39,6 +40,30 @@ form {
     background-color: #2a2a2a;
     border: 2px solid #444;
     border-radius: 5px;
+    font-family: 'OCR';
+    color: white;
+}
+
+button {
+    padding: 10px;
+    font-family: 'OCR';
+    background-color: #5c9eff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+footer {
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+footer > a {
+    text-decoration: underline;
 }
 
 @media (max-width: 600px) {
