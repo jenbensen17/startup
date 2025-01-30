@@ -19,7 +19,6 @@ table {
     align-items: center;
     gap: 10px;
     margin: 0;
-    text-align: center;
     justify-content: center;
 }
 
@@ -69,3 +68,18 @@ form input {
     text-align: center;
 }
 
+
+@media (max-width: 600px) {
+    table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 5px;
+        width: auto;
+    }
+
+    input {
+        width: 50%;
+    }
+ }
