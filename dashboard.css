@@ -1,8 +1,24 @@
-@font-face {
-    font-family: 'OCR';
-    src: url(./OCR-a___.ttf);
+main  {
+    display: flex;
+    flex-direction: column;
 }
 
-body {
-    font-family: 'OCR', sans-serif;
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+caption {
+    padding: 10px;
+}
+
+th, td {
+    border: 1px solid #333;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #222;
 }
