@@ -34,6 +34,8 @@ th {
     align-items: center;
     gap: 10px;
     margin: 0;
+    text-align: center;
+    justify-content: center;
 }
 
 .username {
@@ -56,14 +58,22 @@ th {
     align-items: center;
 }
 
+
 .workout {
     display: flex;
     flex-direction: column;
 }
 
+#max-lifts {
+    width: 100%;
+}
+
+
 #max-lifts th, #max-lifts td {
     padding: 15px;
     text-wrap: nowrap;
+    width: 100px;
+    text-align: center;
 }
 
 
@@ -140,5 +150,24 @@ button img {
 footer {
     border-top: 2px solid white;
     margin-top: 20px;
+    margin-right: 0;
+    margin-left: 0;
     padding-top: 20px;
+}
+
+@media (max-width: 600px) {
+   main {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+   }
+
+   #workout-date {
+    display: block;
+    margin-top: 5px;
+   }
+
+   #hyphen {
+    content: '';
+   }
 }
