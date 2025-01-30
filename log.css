@@ -1,8 +1,60 @@
-@font-face {
-    font-family: 'OCR';
-    src: url(./OCR-a___.ttf);
+main  {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
 
-body {
-    font-family: 'OCR', sans-serif;
+table {
+    width: 100%;
+    border-collapse: collapse;
+    max-width: 800px;
+}
+
+.exercise {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    text-align: center;
+    justify-content: center;
+}
+
+th, td {
+    border: 1px solid #333;
+    padding: 10px;
+    text-align: center;
+    width: 50px;
+}
+
+th {
+    background-color: #222;
+}
+
+button {
+    padding: 10px;
+    font-family: 'OCR';
+    background-color: #5c9eff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+form input {
+    padding: 10px;
+    border-radius: 20px;
+    font-family: 'OCR';
+    color: black;
+    text-align: center;
 }

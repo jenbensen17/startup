@@ -147,13 +147,7 @@ button img {
     justify-content: center;
 }
 
-footer {
-    border-top: 2px solid white;
-    margin-top: 20px;
-    margin-right: 0;
-    margin-left: 0;
-    padding-top: 20px;
-}
+
 
 @media (max-width: 600px) {
    main {

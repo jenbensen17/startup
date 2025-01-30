@@ -22,7 +22,7 @@
         </nav>
     </header>
 
-
+    <main>
     <div>
     <h2>LOG YOUR WORKOUT HERE</h2>
 
@@ -31,8 +31,12 @@
     <button type="submit">Save and record</button>
     <div>
         <table>
-            <caption> <img src="./images/du" width="25"/>
-                Bench Press</caption>
+            <div class="exercise">
+            <img src="./images/dumbbell.png" width="25"/>
+            <h3> 
+                Bench Press
+            </h3>
+            </div>
             <thead>
             <tr>
                 <th>Set</th>
@@ -44,42 +48,41 @@
             <tr>
                 <td>1</td>
                 <td>
-                    <input type="text" value="195"/>
+                    <input type="text" placeholder="195"/>
                 </td>
                 <td>
-                    <input type="text" value="8"/>
+                    <input type="text" placeholder="8"/>
                 </td>
             </tr>
             <tr>
                 <td>2</td>
                 <td>
-                    <input type="text" value="--"/>
+                    <input type="text" placeholder="--"/>
                 </td>
                 <td>
-                    <input type="text" value="--"/>
+                    <input type="text" placeholder="--"/>
                 </td>
             </tr>
             <tr>
                 <td>3</td>
                 <td>
-                    <input type="text" value="--"/>
+                    <input type="text" placeholder="--"/>
                 </td>
                 <td>
-                    <input type="text" value="--"/>
+                    <input type="text" placeholder="--"/>
                 </td>
             </tr>
             </tbody>
         </table>
         <button type="button">+ Add Set</button>
         </div>
-        <br />
+
         <button type="button">Add Exercise</button>
     </form>
-
+    </main>
     <footer>
         <hr />
         <span>Made by Ben Jensen</span>
-        <br />
         <a href="https://github.com/jenbensen17/startup">GitHub Repo</a>
     </footer>
 </body>
