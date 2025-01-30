@@ -20,7 +20,7 @@ Are you tired of tracking your workouts only to lose your notes? Have you wanted
 
 ### Design
 
-![Design image](fit-tracker.png)
+![Design image](./images/fit-tracker.png)
 
 Here is a sequence diagram that shows how users will log, like, and comment on workouts.
 
