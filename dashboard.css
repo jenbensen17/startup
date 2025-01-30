@@ -1,6 +1,7 @@
 main  {
+    padding-top: 50px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: flex-start;
     gap: 20px;
 }
@@ -36,20 +37,108 @@ th {
 }
 
 .username {
+    margin: 0;
     background-color: #2a2a2a;
     padding: 10px 20px;
     border-radius: 8px;
-    margin-bottom: 20px;
     font-size: 18px;
+    margin-top: 10px;
+    text-align: center;
     
 }
 
 .user-info {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 20px;
+    align-items: center;
 }
 
 .workout {
     display: flex;
     flex-direction: column;
+}
+
+#max-lifts th, #max-lifts td {
+    padding: 15px;
+    text-wrap: nowrap;
+}
+
+
+button {
+    padding: 10px;
+    font-family: 'OCR';
+    background-color: #5c9eff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.social {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.like {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+form input {
+    padding: 10px;
+    border-radius: 20px;
+    font-family: 'OCR';
+    color: black;
+}
+
+button img {
+    width: 20px;
+}
+
+.comments {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+
+    
+}
+
+.comments h3 {
+    margin-bottom: 30px;
+}
+
+.comments ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.comments ul li {
+    margin-bottom: 30px;
+}
+
+.comments ul li span{
+    background-color:#222;
+    padding: 10px;
+
+    border-radius: 10px;
+    justify-content: center;
+}
+
+footer {
+    border-top: 2px solid white;
+    margin-top: 20px;
+    padding-top: 20px;
 }

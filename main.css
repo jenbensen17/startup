@@ -54,17 +54,7 @@ button {
     cursor: pointer;
 }
 
-footer {
-    margin: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
 
-footer > a {
-    text-decoration: underline;
-}
 
 @media (max-width: 600px) {
     main h1 {

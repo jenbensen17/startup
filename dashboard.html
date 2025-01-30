@@ -28,7 +28,7 @@
         <span class="username"> User: Username</span>
         <div class="max-lifts">
             <p>Max Lifts</p>
-            <table>
+            <table id="max-lifts">
                 <tr>
                 <th>Max Bench</th>
                 <th>Max Squat</th>
@@ -41,15 +41,15 @@
                 </tr>
             </table>
           </div>
+          <a href="log.html">
+            <button>Log New Workout</button>
+          </a>
       </div>
       <div class="workout">
         <div id="workout-title">
           <img src="./images/dumbbell.png" width="50"/>
           <h3> Early Morning Workout - Tuesday, Jan 21 2025</h3>
         </div>
-        <a href="log.html">
-          <button>Log New Workout</button>
-        </a>
         <table>
             <caption>
                 Bench Press
@@ -109,37 +109,37 @@
               </tr>
             </tbody>
           </table>
-          <br />
-          <div>
-            <button>
-                <img src="./images/like.svg">
-            </button>
-            <span>2</span>
-          </div>
-          <br/>
-          <form method="get" action="">
-            <div>
-              <input type="text" placeholder="" />
-              <button type="submit">Comment</button>
+          <div class="social">
+            <div class="like">
+              <button>
+                  <img src="./images/thumbs_up.png">
+              </button>
+              <span>2</span>
             </div>
-        </form>
+            <br/>
+            <form method="get" action="">
+              <div>
+                <input type="text" placeholder="" />
+                <button type="submit">Comment</button>
+              </div>
+          </form>
+        </div>
 
-
-
-          <h3>Comments</h3>
-          <ul>
-            <li>
-                Joe: Beast Mode
-            </li>
-            <li>
-                Max: nice
-            </li>
-        </ul>
+        <div class="comments">
+            <h3>Comments</h3>
+            <ul>
+              <li>
+                  Joe: <span>Beast Mode</span>
+              </li>
+              <li>
+                  Max: <span>nice</span>
+              </li>
+          </ul>
+        </div>  
       </div>
     </main>
 </body>
 <footer>
-    <hr />
     <span>Made by Ben Jensen</span>
     <br />
     <a href="https://github.com/jenbensen17/startup">GitHub Repo</a>
