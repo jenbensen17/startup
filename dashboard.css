@@ -1,24 +1,37 @@
 main  {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
+    max-width: 800px;
 }
 
 caption {
     padding: 10px;
+    text-align: center;
 }
 
 th, td {
     border: 1px solid #333;
     padding: 10px;
     text-align: center;
+    width: 50px;
 }
 
 th {
     background-color: #222;
 }
+
+#workout-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+}
+
