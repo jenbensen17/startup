@@ -1,15 +1,23 @@
 @font-face {
     font-family: 'OCR';
-    src: url(./OCR-a___.ttf);
+    src: url(../public/OCR-a___.ttf);
 }
 
-body {
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.body {
     font-family: 'OCR', sans-serif;
     background-color: #121212;
     color: white;
     display: flex;
     flex-direction: column;
     min-width: 375px;
+    min-height: 100vh;
+
 }
 
 
@@ -51,6 +59,7 @@ nav menu li {
 
 a {
     text-decoration: none;
+    color: white;
 }
 
 a:visited {
