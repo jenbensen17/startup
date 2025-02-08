@@ -11,7 +11,7 @@ export default function App() {
     <BrowserRouter>
     <div className='body'>
          <header>
-            <NavLink to="index.html" className="logo">
+            <NavLink to='' className="logo">
                 <img className="logo-img" src="/def-cor.png" />
                 <h1>DEFCOR-FIT</h1>
             </NavLink>
@@ -47,5 +47,5 @@ export default function App() {
   }
 
   function NotFound() {
-    return <main className='container-fluid bg-secondary text-center'>404: Return to sender. Address unknown.</main>;
+    return <main className='error'>404: Return to sender. Address unknown.</main>;
   }

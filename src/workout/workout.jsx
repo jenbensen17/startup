@@ -4,9 +4,9 @@ import './workout.css'
 export function Workout() {
   return (
     <main className='workout-page'>
-    <form method="get" action="dashboard.html">
+    <form method="get" action='index.html'>
         <h2>LOG YOUR WORKOUT HERE</h2>
-    <button type="submit">Save and Record</button>
+    <button type="button">Save and Record</button>
     <div>
     <div className="exercise">
                 <img src="/dumbbell.png" width="25"/>

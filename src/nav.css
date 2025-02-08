@@ -3,6 +3,11 @@
     src: url(/OCR-a___.ttf);
 }
 
+.error {
+    display: flex;
+    justify-content: center;
+}
+
 html, body {
     height: 100%;
     margin: 0;
