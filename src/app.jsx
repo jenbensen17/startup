@@ -8,7 +8,7 @@ export default function App() {
     <div className='body'>
          <header>
             <a href="index.html" className="logo">
-                <img className="logo-img" src="./public/def-cor.png" />
+                <img className="logo-img" src="/def-cor.png" />
                 <h1>DEFCOR-FIT</h1>
             </a>
             <nav>

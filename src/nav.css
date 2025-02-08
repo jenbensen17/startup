@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'OCR';
-    src: url(../public/OCR-a___.ttf);
+    src: url(/OCR-a___.ttf);
 }
 
 html, body {
