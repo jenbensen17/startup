@@ -1,4 +1,4 @@
-main  {
+.workout-page main {
     padding-top: 50px;
     display: flex;
     flex-direction: column;
@@ -7,13 +7,13 @@ main  {
     gap: 20px;
 }
 
-table {
+.workout-page table {
     width: 100%;
     border-collapse: collapse;
     max-width: 800px;
 }
 
-.exercise {
+.workout-page .exercise {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -22,18 +22,18 @@ table {
     justify-content: center;
 }
 
-th, td {
+.workout-page th, .workout-page td {
     border: 1px solid #333;
     padding: 10px;
     text-align: center;
     width: 50px;
 }
 
-th {
+.workout-page th {
     background-color: #222;
 }
 
-button {
+.workout-page button {
     padding: 10px;
     font-family: 'OCR';
     background-color: #5c9eff;
@@ -43,24 +43,24 @@ button {
     cursor: pointer;
 }
 
-#add-set-btn {
+.workout-page #add-set-btn {
     margin-top: 10px;
     margin-bottom: 30px;
     background-color: #333;
     width: 100%;
 }
 
-#add-exercise-btn {
+.workout-page #add-exercise-btn {
     width: 100%;
 }
 
-form {
+.workout-page form {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-form input {
+.workout-page form input {
     padding: 10px;
     border-radius: 20px;
     font-family: 'OCR';
@@ -68,18 +68,17 @@ form input {
     text-align: center;
 }
 
-
 @media (max-width: 600px) {
-    table {
+    .workout-page table {
         font-size: 14px;
     }
 
-    th, td {
+    .workout-page th, .workout-page td {
         padding: 5px;
         width: auto;
     }
 
-    input {
+    .workout-page input {
         width: 50%;
     }
- }
+}

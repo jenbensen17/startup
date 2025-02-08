@@ -1,4 +1,4 @@
-main {
+.login-page main {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -7,13 +7,13 @@ main {
     width: 100%;
 }
 
-main h1 {
+.login-page main h1 {
     margin-bottom: 20px;
     margin-left: 0px;
     
 }
 
-form {
+.login-page form {
     background-color: #1e1e1e;
     padding: 30px;
     border-radius: 10px;
@@ -44,7 +44,7 @@ form {
     color: white;
 }
 
-button {
+.login-page button {
     padding: 10px;
     font-family: 'OCR';
     background-color: #5c9eff;
@@ -57,7 +57,7 @@ button {
 
 
 @media (max-width: 600px) {
-    main h1 {
+    .login-page main h1 {
         font-size: 28px;
     }
 }

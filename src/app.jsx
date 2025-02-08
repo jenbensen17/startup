@@ -24,7 +24,7 @@ export default function App() {
             </nav>
         </header>
 
-        <main>App components go here</main>
+        
 
         {/* // to */}
 
