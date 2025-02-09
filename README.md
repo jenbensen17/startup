@@ -95,9 +95,9 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 - [x] **Bundled using Vite** - Bundled the application using Vite.
 - [x] **Components** - Components converted:
-    [x] **login** - login page converted to a react component
-    [x] **dashboard** - dashboard page converted to react component with mock data
-    [x] **workout** - workout page converted to react component without interaction
+    - [x] **login** - login page converted to a react component
+    - [x] **dashboard** - dashboard page converted to react component with mock data
+    - [x] **workout** - workout page converted to react component without interaction
 - [x] **Router** - Routing between home page, dashboard, and workout pages.
 
 ## 🚀 React part 2: Reactivity
