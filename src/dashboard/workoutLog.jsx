@@ -1,9 +1,20 @@
 import React from 'react';
+import { Exercise } from './exercise';
+
 
 export function WorkoutLog(props) {
     const [numLikes, setNumLikes] = React.useState(0);
     const [likedWorkout, setLikedWorkout] = React.useState(false);
-  
+    const benchPressData = [
+        { set: 1, weight: "195 lb", reps: "x 8" },
+        { set: 2, weight: "195 lb", reps: "x 8" },
+        { set: 3, weight: "195 lb", reps: "x 8" },
+    ];
+    const backSquatData = [
+        { set: 1, weight: "245 lb", reps: "x 3" },
+        { set: 2, weight: "335 lb", reps: "x 5" },
+        { set: 3, weight: "335 lb", reps: "x 5" },
+    ];
     return (
     <>
     <div className="workout">
@@ -11,65 +22,8 @@ export function WorkoutLog(props) {
         <img src="/dumbbell.png" width="50"/>
         <h3> Early Morning Workout <span id="workout-date"><span id="hyphen">-</span> Tuesday, Jan 21 2025</span></h3>
       </div>
-      <table>
-          <caption>
-              Bench Press
-          </caption>
-          <thead>
-            <tr>
-              <th>Set</th>
-              <th>Weight</th>
-              <th>Reps</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>195 lb</td>
-              <td>x 8</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>195 lb</td>
-              <td>x 8</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>195 lb</td>
-              <td>x 8</td>
-            </tr>
-          </tbody>
-        </table>
-        <br/>
-        <table>
-          <caption>
-              Back Squat
-          </caption>
-          <thead>
-            <tr>
-              <th>Set</th>
-              <th>Weight</th>
-              <th>Reps</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>245 lb</td>
-              <td>x 3</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>335 lb</td>
-              <td>x 5</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>335 lb</td>
-              <td>x 5</td>
-            </tr>
-          </tbody>
-        </table>
+        <Exercise title="Bench Press" data={benchPressData}/>
+        <Exercise title ="Back Squat" data={backSquatData} />
         <div className="social">
           <div className="like">
             <button
