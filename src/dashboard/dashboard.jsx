@@ -33,8 +33,8 @@ export function Dashboard(props) {
         </NavLink>
     </div>
     <div className='workout-logs'>
-        <WorkoutLog/>
-        <WorkoutLog />
+        <WorkoutLog userName={userName}/>
+        <WorkoutLog userName={userName}/>
     </div>
   </main>
   );

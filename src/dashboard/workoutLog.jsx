@@ -3,8 +3,13 @@ import { Exercise } from './exercise';
 
 
 export function WorkoutLog(props) {
+    const userName = props.userName;
     const [numLikes, setNumLikes] = React.useState(0);
     const [likedWorkout, setLikedWorkout] = React.useState(false);
+    const [comments, setComments] = React.useState([]);
+    const [newComment, setNewComment] = React.useState();
+
+
     const benchPressData = [
         { set: 1, weight: "195 lb", reps: "x 8" },
         { set: 2, weight: "195 lb", reps: "x 8" },
@@ -15,6 +20,14 @@ export function WorkoutLog(props) {
         { set: 2, weight: "335 lb", reps: "x 5" },
         { set: 3, weight: "335 lb", reps: "x 5" },
     ];
+
+    const handleCommentButton = () => {
+        if (newComment.trim() === "") return;
+        setComments([...comments, { user: userName, text: newComment }]);
+        setNewComment("");
+      };
+
+
     return (
     <>
     <div className="workout">
@@ -47,23 +60,32 @@ export function WorkoutLog(props) {
             <span>{numLikes}</span>
           </div>
           <br/>
-          <form method="get" action="">
+          <div className='comment-form'>
             <div>
-              <input type="text" placeholder="" />
-              <button type="submit">Comment</button>
+              <input 
+              type="text" 
+              placeholder="" 
+              value={newComment}
+              onChange={(e) =>{
+                setNewComment(e.target.value) 
+                }}
+                
+                />
+              <button type="button"
+                onClick={handleCommentButton}
+              >Comment</button>
             </div>
-        </form>
+        </div>
       </div>
 
       <div className="comments">
           <h3>Comments</h3>
           <ul>
-            <li>
-                Joe: <span>Beast Mode</span>
-            </li>
-            <li>
-                Max: <span>nice</span>
-            </li>
+          {comments && comments.map((comment, index) => (
+                <li key={index}>
+                    {comment.user}: <span>{comment.text}</span>
+                </li>
+            ))}
         </ul>
       </div>  
     </div>

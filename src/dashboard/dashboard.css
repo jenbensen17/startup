@@ -124,13 +124,13 @@
     gap: 10px;
 }
 
-.dashboard-page form {
+.dashboard-page .comment-form {
     display: flex;
     align-items: center;
     margin-top: 10px;
 }
 
-.dashboard-page form input {
+.dashboard-page .comment-form input {
     padding: 10px;
     border-radius: 20px;
     font-family: 'OCR';
