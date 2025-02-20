@@ -1,9 +1,12 @@
 import React from 'react';
 import { Exercise } from './exercise';
+import { useEffect } from 'react';
 
 
 export function WorkoutLog(props) {
     const userName = props.userName;
+    const workoutDate = props.workoutDate;
+    const workoutID = 'workout-${workoutDate}';
     const [numLikes, setNumLikes] = React.useState(0);
     const [likedWorkout, setLikedWorkout] = React.useState(false);
     const [comments, setComments] = React.useState([]);
@@ -21,6 +24,27 @@ export function WorkoutLog(props) {
         { set: 3, weight: "335 lb", reps: "x 5" },
     ];
 
+
+    useEffect(() => {
+        const storedWorkoutData = JSON.parse(localStorage.getItem(workoutID)) || {
+            comments: [],
+            numLikes: 0,
+            likedWorkout: false,
+        };
+        setComments(storedWorkoutData.comments);
+        setNumLikes(storedWorkoutData.numLikes);
+        setLikedWorkout(storedWorkoutData.likedWorkout);
+    }, [workoutID])
+
+    useEffect(() => {
+        const workoutData = {
+            comments,
+            numLikes,
+            likedWorkout
+        };
+        localStorage.setItem(workoutID, JSON.stringify(workoutData));
+    }), [comments, numLikes, likedWorkout, workoutID];
+
     const handleCommentButton = () => {
         if (newComment.trim() === "") return;
         setComments([...comments, { user: userName, text: newComment }]);
@@ -33,7 +57,7 @@ export function WorkoutLog(props) {
     <div className="workout">
       <div id="workout-title">
         <img src="/dumbbell.png" width="50"/>
-        <h3> Early Morning Workout <span id="workout-date"><span id="hyphen">-</span> Tuesday, Jan 21 2025</span></h3>
+        <h3> Early Morning Workout <span id="workout-date"><span id="hyphen">-</span> {workoutDate}</span></h3>
       </div>
         <Exercise title="Bench Press" data={benchPressData}/>
         <Exercise title ="Back Squat" data={backSquatData} />

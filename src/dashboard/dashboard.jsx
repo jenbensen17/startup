@@ -33,8 +33,8 @@ export function Dashboard(props) {
         </NavLink>
     </div>
     <div className='workout-logs'>
-        <WorkoutLog userName={userName}/>
-        <WorkoutLog userName={userName}/>
+        <WorkoutLog userName={userName} workoutDate = {"2025-01-21"}/>
+        {/* <WorkoutLog userName={userName} workoutDate= {"2025-01-22"}/> */}
     </div>
   </main>
   );
