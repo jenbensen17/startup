@@ -32,8 +32,10 @@ export function Dashboard(props) {
           <button>Log New Workout</button>
         </NavLink>
     </div>
-
-    <WorkoutLog/>
+    <div className='workout-logs'>
+        <WorkoutLog/>
+        <WorkoutLog />
+    </div>
   </main>
   );
 }
