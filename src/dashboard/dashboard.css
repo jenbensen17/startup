@@ -13,6 +13,19 @@
     max-width: 800px;
 }
 
+.workout table {
+    background-color: #2e3440;
+}
+
+.workout th {
+    background-color: #4c566a;
+}
+
+.workout td {
+    background-color: #3b4252;
+    
+}
+
 .dashboard-page caption {
     padding: 10px;
     text-align: center;
@@ -62,6 +75,10 @@
 .workout {
     display: flex;
     flex-direction: column;
+    background-color: #2a2a2a;
+    
+    padding: 30px;
+    border-radius: 10px;
 }
 
 #max-lifts {
