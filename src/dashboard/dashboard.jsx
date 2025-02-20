@@ -34,7 +34,7 @@ export function Dashboard(props) {
     </div>
     <div className='workout-logs'>
         <WorkoutLog userName={userName} workoutDate = {"2025-01-21"}/>
-        {/* <WorkoutLog userName={userName} workoutDate= {"2025-01-22"}/> */}
+        <WorkoutLog userName={userName} workoutDate= {"2025-01-22"}/>
     </div>
   </main>
   );
