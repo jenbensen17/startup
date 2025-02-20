@@ -12,7 +12,7 @@ export default function App() {
     const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
     const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
     const [authState, setAuthState] = React.useState(currentAuthState);
-    
+
     return (
     <BrowserRouter>
     <div className='body'>
@@ -35,7 +35,20 @@ export default function App() {
         {/* // to */}
 
         <Routes>
-            <Route path='/' element={<Login />} exact />
+            <Route
+                path='/'
+                element={
+                <Login
+                    userName={userName}
+                    authState={authState}
+                    onAuthChange={(userName, authState) => {
+                        setAuthState(authState);
+                        setUserName(userName);
+                    }}
+                />
+                }
+                exact
+            />
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/workout' element={<Workout />} />
             <Route path='*' element={<NotFound />} />

@@ -14,7 +14,7 @@
     
 }
 
-.login-page form {
+.login-page .login-form {
     background-color: #1e1e1e;
     padding: 30px;
     border-radius: 10px;
@@ -56,7 +56,12 @@
     margin: 10px;
 }
 
-
+.login-page button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: #3a3a3a;
+    color: #b0b0b0;
+}
 
 @media (max-width: 600px) {
     .login-page main h1 {
