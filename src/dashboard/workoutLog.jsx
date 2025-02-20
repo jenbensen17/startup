@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 export function WorkoutLog(props) {
     const userName = props.userName;
     const workoutDate = props.workoutDate;
-    const workoutID = `workout-${workoutDate}`;
+    const workoutID = `${userName}-workout-${workoutDate}`;
     const [numLikes, setNumLikes] = React.useState(0);
     const [likedWorkout, setLikedWorkout] = React.useState(false);
     const [comments, setComments] = React.useState([]);
