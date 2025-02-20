@@ -51,6 +51,18 @@ export function WorkoutLog(props) {
         setNewComment("");
       };
 
+    // // setInterval(() => {
+    // //     const user = `User-${Math.floor(Math.random() * 100)}`;
+    // //     setComments([...comments, {user: user, text: "beast mode!"}])
+        
+    // // }, 5000);
+
+    // setInterval(() => {
+    //     setNumLikes(
+    //         numLikes + 1
+    //     )
+    // }, 7000);
+
 
     return (
     <>
