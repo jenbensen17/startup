@@ -4,7 +4,6 @@ export function Unauthenticated(props) {
 
     const [userName, setUserName] = React.useState(props.userName);
     const [password, setPassword] = React.useState('');
-    const [displayError, setDisplayError] = React.useState(null);
 
     async function loginUser() {
         localStorage.setItem('userName', userName);
@@ -52,6 +51,7 @@ export function Unauthenticated(props) {
                 </button>
             </div>
         </div>
+        
         </>
     )
 }
