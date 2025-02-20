@@ -24,8 +24,8 @@ export default function App() {
             <nav>
                 <menu>
                     <li><NavLink to=''>Login</NavLink></li>
-                    <li><NavLink to='dashboard'>Dashboard</NavLink></li>
-                    <li><NavLink to="workout">Log Workout</NavLink></li>
+                    {authState == AuthState.Authenticated && <li><NavLink to='dashboard'>Dashboard</NavLink></li>}
+                    {authState == AuthState.Authenticated && <li><NavLink to="workout">Log Workout</NavLink></li> }
                 </menu>
             </nav>
         </header>
