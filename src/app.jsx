@@ -50,7 +50,7 @@ export default function App() {
                 exact
             />
             <Route path='/dashboard' element={<Dashboard userName={userName} />} />
-            <Route path='/workout' element={<Workout />} />
+            <Route path='/workout' element={<Workout userName={userName}/>} />
             <Route path='*' element={<NotFound />} />
         </Routes>
 

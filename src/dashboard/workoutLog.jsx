@@ -11,7 +11,7 @@ export function WorkoutLog(props) {
     const [likedWorkout, setLikedWorkout] = React.useState(false);
     const [comments, setComments] = React.useState([]);
     const [newComment, setNewComment] = React.useState();
-
+    
 
     const benchPressData = [
         { set: 1, weight: "195 lb", reps: "x 8" },

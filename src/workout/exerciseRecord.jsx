@@ -19,6 +19,10 @@ export function ExerciseRecord(props) {
         })
     }
 
+    React.useEffect(() => {
+        props.onSetChange(sets);
+    }, [sets]);
+
     return (
         <>
         <div className="record">

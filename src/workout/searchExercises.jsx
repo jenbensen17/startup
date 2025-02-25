@@ -16,8 +16,7 @@ export function SearchExercises(props) {
                 onChange={(e) => setSearch(e.target.value)}
                 ></input>
              <ul className="modal-list">
-                {exercises
-                    .filter((e) => e.toLowerCase().includes(search.toLowerCase()))
+                {exercises.filter((e) => e.toLowerCase().includes(search.toLowerCase()))
                     .map((exercise, index) => (
                     <li key={index} className="modal-item" onClick={() => props.onSelect(exercise)}>
                         {exercise}
