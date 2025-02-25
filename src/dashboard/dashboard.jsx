@@ -6,6 +6,20 @@ import { WorkoutLog } from './workoutLog';
 export function Dashboard(props) {
   const userName = props.userName;
 
+  const [workoutLogs , setWorkoutLogs] = React.useState([]);
+
+  React.useEffect(() => {
+
+    const storedWorkouts = Object.keys(localStorage)
+    .filter((key) => key.startsWith(`${userName}-workout-`))
+    .map((key) => JSON.parse(localStorage.getItem(key)))
+
+
+    storedWorkouts.sort((a, b) => new Date(b.workoutDate) - new Date(a.workoutDate));
+
+    setWorkoutLogs(storedWorkouts)
+  }, [userName])
+
 
   return (
     <main className="dashboard-page">
@@ -33,8 +47,13 @@ export function Dashboard(props) {
         </NavLink>
     </div>
     <div className='workout-logs'>
-        <WorkoutLog userName={userName} workoutDate = {"2025-01-21"}/>
-        <WorkoutLog userName={userName} workoutDate= {"2025-01-22"}/>
+    {workoutLogs.length > 0 ? (
+                    workoutLogs.map((workout, index) => (
+                        <WorkoutLog key={index} userName={userName} workoutDate={workout.workoutDate} />
+                    ))
+                ) : (
+                    <p>No workouts logged yet.</p>
+                )}
     </div>
   </main>
   );

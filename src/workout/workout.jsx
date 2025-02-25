@@ -27,10 +27,10 @@ export function Workout(props) {
         const workoutData = exercises.map((exercise) => {
             return {
                 name: exercise,
-                sets: []
+                sets: exerciseSets[exercise] || []
             }
         })
-        localStorage.setItem(`${userName}-workout-${workoutDate}`, JSON.stringify(workoutData));
+        localStorage.setItem(`${userName}-workout-${workoutDate}`, JSON.stringify({ workoutDate, workoutData }));
     }
 
   return (

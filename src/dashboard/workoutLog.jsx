@@ -11,26 +11,18 @@ export function WorkoutLog(props) {
     const [likedWorkout, setLikedWorkout] = React.useState(false);
     const [comments, setComments] = React.useState([]);
     const [newComment, setNewComment] = React.useState();
+    const [exercises, setExercises] = React.useState([]);
     
-
-    const benchPressData = [
-        { set: 1, weight: "195 lb", reps: "x 8" },
-        { set: 2, weight: "195 lb", reps: "x 8" },
-        { set: 3, weight: "195 lb", reps: "x 8" },
-    ];
-    const backSquatData = [
-        { set: 1, weight: "245 lb", reps: "x 3" },
-        { set: 2, weight: "335 lb", reps: "x 5" },
-        { set: 3, weight: "335 lb", reps: "x 5" },
-    ];
 
 
     useEffect(() => {
-        const storedWorkoutData = JSON.parse(localStorage.getItem(workoutID)) || {
+         const storedWorkoutData = JSON.parse(localStorage.getItem(workoutID)) || {
+            exercises: [],
             comments: [],
             numLikes: 0,
             likedWorkout: false,
         };
+        setExercises(storedWorkoutData.exercises || []);
         setComments(storedWorkoutData.comments);
         setNumLikes(storedWorkoutData.numLikes);
         setLikedWorkout(storedWorkoutData.likedWorkout);
@@ -38,12 +30,13 @@ export function WorkoutLog(props) {
 
     useEffect(() => {
         const workoutData = {
+            exercises,
             comments,
             numLikes,
             likedWorkout
         };
         localStorage.setItem(workoutID, JSON.stringify(workoutData));
-    }), [comments, numLikes, likedWorkout, workoutID];
+    }), [comments, numLikes, likedWorkout, exercises, workoutID];
 
     const handleCommentButton = () => {
         if (newComment.trim() === "") return;
@@ -71,8 +64,13 @@ export function WorkoutLog(props) {
         <img src="/dumbbell.png" width="50"/>
         <h3> Early Morning Workout <span id="workout-date"><span id="hyphen">-</span> {workoutDate}</span></h3>
       </div>
-        <Exercise title="Bench Press" data={benchPressData}/>
-        <Exercise title ="Back Squat" data={backSquatData} />
+      {exercises.length > 0 ? (
+                exercises.map((exercise, index) => (
+                    <Exercise key={index} title={exercise.name} data={exercise.sets} />
+                ))
+            ) : (
+                <p>No exercises recorded for this workout.</p>
+            )}
         <div className="social">
           <div className="like">
             <button
