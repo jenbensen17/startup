@@ -14,15 +14,14 @@ export function Dashboard(props) {
     .filter((key) => key.startsWith(`${userName}-workout-`))
     .map((key) => {
       const workoutData = JSON.parse(localStorage.getItem(key));
+      console.log(workoutData)
       return {
           id: key,
-          workoutDate: workoutData.workoutDate, // Extract readable date
-          workoutTimestamp: key.split('-workout-')[1], // Extract timestamp
+          workoutDate: workoutData.workoutDate,
+          workoutTimestamp: key.split('-workout-')[1],
       };
 
       })
-    
-
 
     storedWorkouts.sort((a, b) => new Date(b.workoutDate) - new Date(a.workoutDate));
 

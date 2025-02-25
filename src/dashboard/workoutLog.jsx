@@ -27,11 +27,12 @@ export function WorkoutLog(props) {
       setComments(storedWorkoutData.comments || []);
       setNumLikes(storedWorkoutData.numLikes || 0);
       setLikedWorkout(storedWorkoutData.likedWorkout || false);
-      // console.log(storedWorkoutData)
+
   }, [workoutID]);
 
   useEffect(() => {
     const workoutData = {
+        workoutDate,
         exercises,
         comments,
         numLikes,
@@ -64,7 +65,7 @@ export function WorkoutLog(props) {
     <div className="workout">
       <div id="workout-title">
         <img src="/dumbbell.png" width="50"/>
-        <h3> Early Morning Workout <span id="workout-date"><span id="hyphen">-</span> {workoutDate}</span></h3>
+        <h3> Workout <span id="workout-date"><span id="hyphen">-</span> {workoutDate}</span></h3>
       </div>
       {exercises.length > 0 ? (
                 exercises.map((exercise, index) => (
