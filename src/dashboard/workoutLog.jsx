@@ -6,37 +6,39 @@ import { useEffect } from 'react';
 export function WorkoutLog(props) {
     const userName = props.userName;
     const workoutDate = props.workoutDate;
-    const workoutID = `${userName}-workout-${workoutDate}`;
+    const workoutTimestamp = props.workoutTimestamp
+    const workoutID = `${userName}-workout-${workoutTimestamp}`;
     const [numLikes, setNumLikes] = React.useState(0);
     const [likedWorkout, setLikedWorkout] = React.useState(false);
     const [comments, setComments] = React.useState([]);
-    const [newComment, setNewComment] = React.useState();
+    const [newComment, setNewComment] = React.useState("");
     const [exercises, setExercises] = React.useState([]);
     
 
 
     useEffect(() => {
-         const storedWorkoutData = JSON.parse(localStorage.getItem(workoutID)) || {
-            exercises: [],
-            comments: [],
-            numLikes: 0,
-            likedWorkout: false,
-        };
-        setExercises(storedWorkoutData.exercises || []);
-        setComments(storedWorkoutData.comments);
-        setNumLikes(storedWorkoutData.numLikes);
-        setLikedWorkout(storedWorkoutData.likedWorkout);
-    }, [workoutID])
+      const storedWorkoutData = JSON.parse(localStorage.getItem(workoutID)) || {
+          exercises: [],
+          comments: [],
+          numLikes: 0,
+          likedWorkout: false,
+      };
+      setExercises(storedWorkoutData.exercises || []);
+      setComments(storedWorkoutData.comments || []);
+      setNumLikes(storedWorkoutData.numLikes || 0);
+      setLikedWorkout(storedWorkoutData.likedWorkout || false);
+      // console.log(storedWorkoutData)
+  }, [workoutID]);
 
-    useEffect(() => {
-        const workoutData = {
-            exercises,
-            comments,
-            numLikes,
-            likedWorkout
-        };
-        localStorage.setItem(workoutID, JSON.stringify(workoutData));
-    }), [comments, numLikes, likedWorkout, exercises, workoutID];
+  useEffect(() => {
+    const workoutData = {
+        exercises,
+        comments,
+        numLikes,
+        likedWorkout
+    };
+    localStorage.setItem(workoutID, JSON.stringify(workoutData));
+}, [comments, numLikes, likedWorkout, exercises, workoutID]);
 
     const handleCommentButton = () => {
         if (newComment.trim() === "") return;
@@ -75,17 +77,8 @@ export function WorkoutLog(props) {
           <div className="like">
             <button
             onClick={() => {
-              if(!likedWorkout) {
-                setNumLikes(
-                numLikes + 1
-              )
-              setLikedWorkout(true)
-            } else {
-                setNumLikes(
-                    numLikes - 1
-                )
-                setLikedWorkout(false)
-            }
+              setNumLikes((prevLikes) => (likedWorkout ? prevLikes - 1 : prevLikes + 1));
+                            setLikedWorkout((prevLiked) => !prevLiked);
             }}
             
             >

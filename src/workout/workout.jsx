@@ -23,14 +23,22 @@ export function Workout(props) {
     }
 
     const saveWorkout = () => {
-        const workoutDate = new Date().toLocaleDateString();
-        const workoutData = exercises.map((exercise) => {
-            return {
-                name: exercise,
-                sets: exerciseSets[exercise] || []
-            }
-        })
-        localStorage.setItem(`${userName}-workout-${workoutDate}`, JSON.stringify({ workoutDate, workoutData }));
+      const workoutDate = new Date().toLocaleDateString();
+      const workoutTimestamp = new Date().toISOString();
+      const workoutData = exercises.map((exercise) => ({
+          name: exercise,
+          sets: exerciseSets[exercise] || []
+      }));
+
+      const workoutEntry = {
+          workoutDate,
+          exercises: workoutData,
+          comments: [],
+          numLikes: 0,
+          likedWorkout: false
+      };
+
+      localStorage.setItem(`${userName}-workout-${workoutTimestamp}`, JSON.stringify(workoutEntry));
     }
 
   return (

@@ -7,7 +7,6 @@ import { Authenticated } from './authenticated';
 
 
 export function Login({userName, authState, onAuthChange}) {
-    {console.log(authState)}
     return (
     <main className="login-page">
         {authState !== AuthState.Unknown && <h1>Welcome to DEFCOR-FIT</h1> }

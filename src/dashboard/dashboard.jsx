@@ -12,12 +12,22 @@ export function Dashboard(props) {
 
     const storedWorkouts = Object.keys(localStorage)
     .filter((key) => key.startsWith(`${userName}-workout-`))
-    .map((key) => JSON.parse(localStorage.getItem(key)))
+    .map((key) => {
+      const workoutData = JSON.parse(localStorage.getItem(key));
+      return {
+          id: key,
+          workoutDate: workoutData.workoutDate, // Extract readable date
+          workoutTimestamp: key.split('-workout-')[1], // Extract timestamp
+      };
+
+      })
+    
 
 
     storedWorkouts.sort((a, b) => new Date(b.workoutDate) - new Date(a.workoutDate));
 
     setWorkoutLogs(storedWorkouts)
+
   }, [userName])
 
 
@@ -48,9 +58,14 @@ export function Dashboard(props) {
     </div>
     <div className='workout-logs'>
     {workoutLogs.length > 0 ? (
-                    workoutLogs.map((workout, index) => (
-                        <WorkoutLog key={index} userName={userName} workoutDate={workout.workoutDate} />
-                    ))
+                     workoutLogs.map((workout) => (
+                      <WorkoutLog 
+                          key={workout.id} 
+                          userName={userName} 
+                          workoutDate={workout.workoutDate} 
+                          workoutTimestamp={workout.workoutTimestamp} 
+                      />
+                  ))
                 ) : (
                     <p>No workouts logged yet.</p>
                 )}
