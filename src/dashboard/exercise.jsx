@@ -3,7 +3,6 @@ import React from "react";
 export function Exercise(props) {
     const title = props.title;
     const data = props.data;
-
     return (
         <>
         <table>
@@ -18,7 +17,7 @@ export function Exercise(props) {
         <tbody>
             {data.map((row, index) => (
             <tr key={index}>
-                <td>{row.set}</td>
+                <td>{index+1}</td>
                 <td>{row.weight}</td>
                 <td>{row.reps}</td>
             </tr>

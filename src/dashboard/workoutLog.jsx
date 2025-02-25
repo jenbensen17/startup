@@ -72,7 +72,7 @@ export function WorkoutLog(props) {
                 ))
             ) : (
                 <p>No exercises recorded for this workout.</p>
-            )}
+      )}
         <div className="social">
           <div className="like">
             <button
@@ -98,7 +98,7 @@ export function WorkoutLog(props) {
                 }}
                 
                 />
-              <button type="button"
+              <button type="button" id='comment-button'
                 onClick={handleCommentButton}
               >Comment</button>
             </div>
