@@ -25,7 +25,7 @@ export function ExerciseRecord(props) {
         <div className="exercise">
                 <img src="/dumbbell.png" width="25"/>
                 <h3> 
-                    Bench Press
+                    {exerciseName}
                 </h3>
             </div>
         <table>
