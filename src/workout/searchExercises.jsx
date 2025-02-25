@@ -1,4 +1,5 @@
 import React from "react";
+import './search.css'
 
 export function SearchExercises(props) {
     const exercises = ["Bench Press", "Squat", "Deadlift"];
@@ -16,7 +17,7 @@ export function SearchExercises(props) {
                 ></input>
              <ul className="modal-list">
                 {exercises
-                    .filter((ex) => ex.toLowerCase().includes(search.toLowerCase()))
+                    .filter((e) => e.toLowerCase().includes(search.toLowerCase()))
                     .map((exercise, index) => (
                     <li key={index} className="modal-item" onClick={() => props.onSelect(exercise)}>
                         {exercise}
