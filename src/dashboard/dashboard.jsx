@@ -23,7 +23,7 @@ export function Dashboard(props) {
 
       })
 
-    storedWorkouts.sort((a, b) => new Date(b.workoutDate) - new Date(a.workoutDate));
+    storedWorkouts.sort((a, b) => new Date(b.workoutTimestamp) - new Date(a.workoutTimestamp));
 
     setWorkoutLogs(storedWorkouts)
 
