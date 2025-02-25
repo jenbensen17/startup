@@ -43,9 +43,9 @@
     cursor: pointer;
 }
 
-.workout-page #add-set-btn {
+.workout-page .set-btn {
     margin-top: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     background-color: #333;
     width: 100%;
 }
