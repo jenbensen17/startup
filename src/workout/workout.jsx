@@ -2,6 +2,7 @@ import React from 'react';
 import './workout.css'
 import { ExerciseRecord } from './exerciseRecord';
 import { SearchExercises } from './searchExercises';
+import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 
 export function Workout(props) {
     const userName = props.userName;
@@ -45,11 +46,13 @@ export function Workout(props) {
     <main className='workout-page'>
     <div className='record-form'>
         <h2>LOG YOUR WORKOUT HERE</h2>
-        <button type="button"
-         id='save-button'
-         onClick={saveWorkout}
-         disabled={exercises.length < 1}
-         >Save and Record</button>
+        <NavLink to="../dashboard"> 
+            <button type="button"
+            id='save-button'
+            onClick={saveWorkout}
+            disabled={exercises.length < 1}
+            >Save and Record</button>
+        </NavLink>
         {exercises.map((exercise, index) => (
           <ExerciseRecord key={index} exerciseName={exercise} onSetChange= {(sets) => handleSetChange(exercise, sets)} />
         ))}

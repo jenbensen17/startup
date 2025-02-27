@@ -24,7 +24,6 @@ export function Dashboard(props) {
           workoutDate: workoutData.workoutDate,
           workoutTimestamp: key.split('-workout-')[1],
       };
-
       })
 
     storedWorkouts.sort((a, b) => new Date(b.workoutTimestamp) - new Date(a.workoutTimestamp));
