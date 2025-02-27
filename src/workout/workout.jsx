@@ -46,7 +46,9 @@ export function Workout(props) {
     <div className='record-form'>
         <h2>LOG YOUR WORKOUT HERE</h2>
         <button type="button"
+        id='save-button'
          onClick={saveWorkout}
+         disabled={exercises.length < 1}
          >Save and Record</button>
         {exercises.map((exercise, index) => (
           <ExerciseRecord key={index} exerciseName={exercise} onSetChange= {(sets) => handleSetChange(exercise, sets)} />
