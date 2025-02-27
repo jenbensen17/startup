@@ -7,6 +7,10 @@ export function Dashboard(props) {
   const userName = props.userName;
 
   const [workoutLogs , setWorkoutLogs] = React.useState([]);
+  const maxBench = localStorage.getItem(`${userName}-maxBench`);
+  const maxSquat = localStorage.getItem(`${userName}-maxSquat`);
+  const maxDeadlift = localStorage.getItem(`${userName}-maxDeadlift`);
+
 
   React.useEffect(() => {
 
@@ -44,9 +48,9 @@ export function Dashboard(props) {
               <th>Deadlift</th>
               </tr>
               <tr>
-              <td>280 lbs</td>
-              <td>415 lbs</td>
-              <td>475 lbs</td>
+              <td>{maxBench != null ? maxBench : 0} lbs</td>
+              <td>{maxSquat != null ? maxSquat : 0} lbs</td>
+              <td>{maxDeadlift != null ? maxDeadlift : 0} lbs</td>
               </tr>
             </tbody>
           </table>
