@@ -104,8 +104,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **All functionality implemented or mocked out** - I did not complete this part of the deliverable.
-- [ ] **Hooks** - I did not complete this part of the deliverable.
+- [x] **All functionality implemented or mocked out** Functionality:
+    - [x] - Record workouts and saved to local storage
+    - [x] - `setInterval` used to simulate comments and likes from other users
+- [x] **Hooks** 
+    - `useState` used throughout the application for comments, workouts, likes, etc
+    - `useEffect` used throughout the application to load and update data
 
 ## 🚀 Service deliverable
 
