@@ -16,11 +16,12 @@ export function Exercise(props) {
         </thead>
         <tbody>
             {data.map((row, index) => (
+            row.weight != '' && row.reps !='' ? (
             <tr key={index}>
                 <td>{index+1}</td>
                 <td>{row.weight}</td>
                 <td>{row.reps}</td>
-            </tr>
+            </tr>) : null
             ))}
       </tbody>
         </table>
