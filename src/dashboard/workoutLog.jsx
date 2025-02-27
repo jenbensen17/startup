@@ -13,6 +13,7 @@ export function WorkoutLog(props) {
     const [comments, setComments] = React.useState([]);
     const [newComment, setNewComment] = React.useState("");
     const [exercises, setExercises] = React.useState([]);
+    const [users, setUsers] = React.useState(new Set());
     
 
 
@@ -47,17 +48,35 @@ export function WorkoutLog(props) {
         setNewComment("");
       };
 
-    // // setInterval(() => {
-    // //     const user = `User-${Math.floor(Math.random() * 100)}`;
-    // //     setComments([...comments, {user: user, text: "beast mode!"}])
+    useEffect(() => {
+      setInterval(() => {
+        const randomChance = Math.floor(Math.random() * 100);
         
-    // // }, 5000);
+        if (randomChance < 33) {
+          setUsers((prevUsers) => {
+            const newUsers = new Set(prevUsers);
+            const user = `User-${Math.floor(Math.random() * 100)}`;
+            newUsers.add(user);
+            return newUsers;
+          })
+            
+            setComments((prevComments) => [
+              ...prevComments,
+              { user: `User-${Math.floor(Math.random() * 100)}`, text: "Beast mode!" }
+            ])
+        }
+      }, 1000);
+  
+      setInterval(() => {
+        const randomChance = Math.floor(Math.random() * 100);
+        if (randomChance < 33) {
+          setNumLikes((prevLikes) => prevLikes + 1);
+        }
+      }, 1000);
+    }, []);
 
-    // setInterval(() => {
-    //     setNumLikes(
-    //         numLikes + 1
-    //     )
-    // }, 7000);
+
+
 
 
     return (
