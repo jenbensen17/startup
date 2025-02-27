@@ -2,7 +2,7 @@ import React from 'react';
 import './workout.css'
 import { ExerciseRecord } from './exerciseRecord';
 import { SearchExercises } from './searchExercises';
-import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export function Workout(props) {
     const userName = props.userName;
