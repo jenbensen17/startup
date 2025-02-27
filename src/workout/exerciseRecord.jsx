@@ -19,6 +19,18 @@ export function ExerciseRecord(props) {
         })
     }
 
+    const updateSet = (index, category, value) => {
+      if(!isNaN(value) || value === '') {
+        const newSets = [...sets];
+        if(category === 'weight') {
+          newSets[index].weight = value;
+        } else if(category === 'reps') {
+          newSets[index].reps = value;
+        }
+        setSets(newSets);
+      }
+    }
+
     React.useEffect(() => {
         props.onSetChange(sets);
     }, [sets]);
@@ -50,11 +62,7 @@ export function ExerciseRecord(props) {
                   type="text"
                   placeholder="--"
                   value={set.weight}
-                  onChange={(e) => {
-                    const newSets = [...sets];
-                    newSets[index].weight = e.target.value;
-                    setSets(newSets);
-                  }}
+                  onChange={(e) => updateSet(index, 'weight', e.target.value)}
                 />
               </td>
               <td>
@@ -62,11 +70,7 @@ export function ExerciseRecord(props) {
                   type="text"
                   placeholder="--"
                   value={set.reps}
-                  onChange={(e) => {
-                    const newSets = [...sets];
-                    newSets[index].reps = e.target.value;
-                    setSets(newSets);
-                  }}
+                  onChange={(e) => updateSet(index, 'reps',  e.target.value)}
                 />
               </td>
             </tr>
