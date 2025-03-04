@@ -9,6 +9,7 @@ const authCookieName = 'token';
 // The users are saved in memory and disappear whenever the service is restarted.
 let users = [];
 let workouts = [];
+let maxLifts = [];
 
 
 
@@ -106,6 +107,19 @@ apiRouter.post('/workouts', verifyAuth, async (req, res) => {
     workouts.push(workout);
     console.log(workout);
     res.status(201).send(workout);
+})
+
+
+//Update Max Lifts - use put because we are updating records
+apiRouter.put('max-lifts', verifyAuth, async (req, res) => {
+    const user = await findUser('token', req.cookies[authCookieName]);
+
+    if(!req.body.maxLifts) {
+        return res.status(400).send({msg: 'Invalid lift data'});
+    }
+    
+    maxLifts[user.email] = req.body.maxLifts;
+    res.status(200).send({msg: 'Max lifts updated'});    
 })
 
 
