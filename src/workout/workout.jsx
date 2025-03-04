@@ -3,6 +3,7 @@ import './workout.css'
 import { ExerciseRecord } from './exerciseRecord';
 import { SearchExercises } from './searchExercises';
 import { NavLink } from 'react-router-dom';
+import { fetchMaxLifts } from '../util/maxLifts';
 
 export function Workout(props) {
     const userName = props.userName;
@@ -10,6 +11,16 @@ export function Workout(props) {
     const [exercises, setExercises] = React.useState([]);
     const [exerciseSets, setExerciseSets] = React.useState({})
     const [maxLifts, setMaxLifts] = React.useState({ Bench: 0, Squat: 0, Deadlift: 0 });
+
+
+    React.useEffect(() => {
+      async function checkMaxLifts() {
+        const data = await fetchMaxLifts();
+        setMaxLifts(data)
+      }
+      checkMaxLifts();
+    }, []);
+
 
     const addExercise = (exercise) => {
         setExercises((prevExercises) => [...prevExercises, exercise]);
