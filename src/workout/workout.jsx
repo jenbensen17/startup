@@ -65,6 +65,34 @@ export function Workout(props) {
       }
     }
 
+    const updateMaxLifts = async(workoutData)=> {
+      let newMaxLifts = { ...maxLifts };
+      workoutData.forEach((exercise) => {
+        exercise.sets.forEach((set) => {
+          if (exercise.name === "Bench Press" && set.weight > newMaxLifts.Bench) {
+            newMaxLifts.Bench = set.weight;
+          } else if (exercise.name === "Squat" && set.weight > newMaxLifts.Squat) {
+            newMaxLifts.Squat = set.weight;
+          } else if (exercise.name === "Deadlift" && set.weight > newMaxLifts.Deadlift) {
+            newMaxLifts.Deadlift = set.weight;
+          }
+        });
+      });
+
+      try {
+        const response = await fetch('/api/max-lifts', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ maxLifts: newMaxLifts })
+        }) 
+        if (response.ok) {
+          setMaxLifts(newMaxLifts);
+        }
+      } catch (error) {
+        console.error('Error updating max lifts:', error);
+      }
+    }
+
   return (
     <main className='workout-page'>
     <div className='record-form'>
