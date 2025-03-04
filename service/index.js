@@ -85,6 +85,30 @@ app.use((_req, res) => {
   });
 
 
+//CreateWorkout
+apiRouter.post('/workouts', verifyAuth, async (req, res) => {
+    const user = await findUser('token', req.cookies[authCookieName]);
+
+    if(!req.body.date || !req.body.exercises) {
+        return res.status(400).send({msg: 'Invalid workout data'})
+    }
+
+    const workout = {
+        id: uuid.v4();
+        email: user.email,
+        date: req.body.date,
+        exercises: req.body.exercises,
+        comments: [],
+        numLikes: 0,
+        likedWorkout: false
+    }
+
+    workouts.push(workout);
+    console.log(workout);
+    res.status(201).send(workout);
+})
+
+
 async function findUser(field, value) {
     if (!value) return null;
   
