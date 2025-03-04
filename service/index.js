@@ -110,6 +110,12 @@ apiRouter.post('/workouts', verifyAuth, async (req, res) => {
 })
 
 
+//Get max lifts
+apiRouter.get('/max-lifts', verifyAuth, async(req, res) => {
+    const user = await findUser('token', req.cookies[authCookieName]);
+    res.send(maxLifts[user.email] || { Bench: 0, Squat: 0, Deadlift: 0 });
+})
+
 //Update Max Lifts - use put because we are updating records
 apiRouter.put('max-lifts', verifyAuth, async (req, res) => {
     const user = await findUser('token', req.cookies[authCookieName]);
