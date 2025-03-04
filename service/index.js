@@ -95,13 +95,13 @@ apiRouter.post('/workouts', verifyAuth, async (req, res) => {
     }
 
     const workout = {
-        id: uuid.v4();
+        id: uuid.v4(),
         email: user.email,
         date: req.body.date,
         exercises: req.body.exercises,
         comments: [],
         numLikes: 0,
-        likedWorkout: false
+        likedWorkout: false,
     }
 
     workouts.push(workout);
