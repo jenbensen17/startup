@@ -94,19 +94,32 @@ apiRouter.post('/workouts', verifyAuth, async (req, res) => {
         return res.status(400).send({msg: 'Invalid workout data'})
     }
 
+    if(!workouts[user.email]) {
+        workouts[user.email] = [];
+    }
+
     const workout = {
-        id: uuid.v4(),
-        email: user.email,
         date: req.body.date,
+        timestamp: req.body.timestamp,
         exercises: req.body.exercises,
         comments: [],
         numLikes: 0,
         likedWorkout: false,
     }
 
-    workouts.push(workout);
-    //console.log(workout);
-    res.status(201).send(workout);
+    workouts[user.email].push(workout);
+    res.status(200).send(workout);
+})
+
+
+//Get workouts
+apiRouter.get('/workouts', verifyAuth, async(req, res) => {
+    const user = await findUser('token', req.cookies[authCookieName]);
+    if(!user) {
+        return res.status(404).send({msg: 'User not found'})
+    }
+
+    const userWorkouts = workouts[user.email]
 })
 
 
@@ -114,13 +127,11 @@ apiRouter.post('/workouts', verifyAuth, async (req, res) => {
 apiRouter.get('/max-lifts', verifyAuth, async(req, res) => {
     const user = await findUser('token', req.cookies[authCookieName]);
     res.send(maxLifts[user.email] || { Bench: 0, Squat: 0, Deadlift: 0 });
-    console.log(maxLifts[user.email]);
 })
 
 //Update Max Lifts - use put because we are updating records
 apiRouter.put('/max-lifts', verifyAuth, async (req, res) => {
     const user = await findUser('token', req.cookies[authCookieName]);
-    console.log("max-lifts:", req.body.maxLifts)
     if(!req.body.maxLifts) {
         return res.status(400).send({msg: 'Invalid lift data'});
     }

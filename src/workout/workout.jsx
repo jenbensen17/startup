@@ -45,6 +45,7 @@ export function Workout(props) {
 
       const workoutEntry = {
           date: workoutDate,
+          timestamp: workoutTimestamp,
           exercises: workoutData,
       };
 
