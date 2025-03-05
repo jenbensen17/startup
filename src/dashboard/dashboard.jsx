@@ -14,23 +14,27 @@ export function Dashboard(props) {
 
   React.useEffect(() => {
 
-    const storedWorkouts = Object.keys(localStorage)
-    .filter((key) => key.startsWith(`${userName}-workout-`))
-    .map((key) => {
-      const workoutData = JSON.parse(localStorage.getItem(key));
-      return {
-          id: key,
-          workoutDate: workoutData.workoutDate,
-          workoutTimestamp: key.split('-workout-')[1],
-      };
+    const fetchWorkouts = async() => {
+      const response = await fetch('/api/workouts', {
+        method: 'GET'
       })
 
-    storedWorkouts.sort((a, b) => new Date(b.workoutTimestamp) - new Date(a.workoutTimestamp));
+      const data = await response.json();
+      console.log("response data:", data)
 
-    setWorkoutLogs(storedWorkouts)
+        setWorkoutLogs(data.userWorkouts)
+      
+    }
 
-  }, [userName])
 
+    fetchWorkouts();
+    console.log("workout logs", workoutLogs)
+  }, [])
+
+
+  React.useEffect(() => {
+    console.log("workoutLogs state updated:", workoutLogs);
+  }, [workoutLogs]); // This will log when workoutLogs updates
 
   return (
     <main className="dashboard-page">
@@ -61,10 +65,10 @@ export function Dashboard(props) {
     {workoutLogs.length > 0 ? (
                      workoutLogs.map((workout) => (
                       <WorkoutLog 
-                          key={workout.id} 
+                          key={workout.timestamp} 
                           userName={userName} 
-                          workoutDate={workout.workoutDate} 
-                          workoutTimestamp={workout.workoutTimestamp} 
+                          workoutDate={workout.data} 
+                          workoutTimestamp={workout.timestamp} 
                       />
                   ))
                 ) : (

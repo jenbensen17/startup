@@ -114,12 +114,14 @@ apiRouter.post('/workouts', verifyAuth, async (req, res) => {
 
 //Get workouts
 apiRouter.get('/workouts', verifyAuth, async(req, res) => {
+    console.log("calling get")
     const user = await findUser('token', req.cookies[authCookieName]);
     if(!user) {
         return res.status(404).send({msg: 'User not found'})
     }
 
     const userWorkouts = workouts[user.email]
+    res.status(200).send({userWorkouts: userWorkouts})
 })
 
 
