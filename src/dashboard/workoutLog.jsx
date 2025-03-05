@@ -5,31 +5,17 @@ import { useEffect } from 'react';
 
 export function WorkoutLog(props) {
     const userName = props.userName;
-    const workoutDate = props.date;
-    const workoutTimestamp = props.timestamp;
+    const workoutDate = props.workoutDate;
+    const workoutTimestamp = props.workoutTimestamp;
+    const exercises = props.exercises;
     const workoutID = `${userName}-workout-${workoutTimestamp}`;
-    const [numLikes, setNumLikes] = React.useState(0);
-    const [likedWorkout, setLikedWorkout] = React.useState(false);
-    const [comments, setComments] = React.useState([]);
+    const [numLikes, setNumLikes] = React.useState(props.numLikes);
+    const [likedWorkout, setLikedWorkout] = React.useState(props.likedWorkout);
+    const [comments, setComments] = React.useState(props.comments);
     const [newComment, setNewComment] = React.useState("");
-    const [exercises, setExercises] = React.useState([]);
     const [users, setUsers] = React.useState(new Set());
     
 
-
-    useEffect(() => {
-      const storedWorkoutData = JSON.parse(localStorage.getItem(workoutID)) || {
-          exercises: [],
-          comments: [],
-          numLikes: 0,
-          likedWorkout: false,
-      };
-      setExercises(storedWorkoutData.exercises || []);
-      setComments(storedWorkoutData.comments || []);
-      setNumLikes(storedWorkoutData.numLikes || 0);
-      setLikedWorkout(storedWorkoutData.likedWorkout || false);
-
-  }, [workoutID]);
 
   useEffect(() => {
     const workoutData = {

@@ -18,23 +18,15 @@ export function Dashboard(props) {
       const response = await fetch('/api/workouts', {
         method: 'GET'
       })
-
       const data = await response.json();
-      console.log("response data:", data)
-
-        setWorkoutLogs(data.userWorkouts)
+      setWorkoutLogs(data.userWorkouts)
       
     }
-
-
     fetchWorkouts();
-    console.log("workout logs", workoutLogs)
   }, [])
 
 
-  React.useEffect(() => {
-    console.log("workoutLogs state updated:", workoutLogs);
-  }, [workoutLogs]); // This will log when workoutLogs updates
+
 
   return (
     <main className="dashboard-page">
@@ -67,8 +59,12 @@ export function Dashboard(props) {
                       <WorkoutLog 
                           key={workout.timestamp} 
                           userName={userName} 
-                          workoutDate={workout.data} 
+                          workoutDate={workout.date} 
                           workoutTimestamp={workout.timestamp} 
+                          exercises = {workout.exercises}
+                          likedWorkout = {workout.likedWorkout}
+                          numLikes = {workout.numLikes}
+                          comments = {workout.comments}
                       />
                   ))
                 ) : (
