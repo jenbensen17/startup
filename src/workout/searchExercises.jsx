@@ -6,15 +6,24 @@ export function SearchExercises(props) {
     const [search, setSearch] = React.useState("");
     const [loading, setLoading] = React.useState(true);
 
-    React.useEffect(() => {
-        const fetchExercises = async () => {
-            const response = await fetch("https://wger.de/api/v2/exercise/?language=2");
+    const fetchExercises = async (term) => {
+            setLoading(true);
+            const response = await fetch(`https://wger.de/api/v2/exercise/search/?language=2&term=${term}`);
             const data = await response.json();
-            console.log(data)
-            setExercises(data.results)
+
+            setExercises(data.suggestions)
+            console.log(data.suggestions)
+            //console.log(exercises)
+            setLoading(false);
+    }
+
+    React.useEffect(() => {
+        if(search.trim()) {
+            fetchExercises(search);
+        } else {
+            setExercises([]);
         }
-        fetchExercises();
-    }, [])
+    }, [search])
 
     return (
         <div className="overlay">
@@ -27,16 +36,19 @@ export function SearchExercises(props) {
                 onChange={(e) => setSearch(e.target.value)}
                 ></input>
              <ul className="modal-list">
-                {(
+                {loading ? (
+                    <p>Loading...</p> // Show loading text while fetching
+                ): (
                         exercises
-                            .filter((exercise) =>
-                                exercise.name.toLowerCase().includes(search.toLowerCase())
+                            ?.filter((exercise) =>
+                                exercise.data.name.toLowerCase().includes(search.toLowerCase())
                             )
-                            .map((exercise) => (
-                                <li key={exercise.id} className="modal-item" onClick={() => props.onSelect(exercise.name)}>
-                                    {exercise.name}
+                            .map((exercise, index) => (
+                                <li key={index} className="modal-item" onClick={() => props.onSelect(exercise.data.name)}>
+                                    {exercise.data.name}
                                 </li>
                             ))
+                            
                     )}
                 </ul>
             <button className="modal-close" onClick={props.onClose}>Close</button>
