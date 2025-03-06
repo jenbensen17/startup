@@ -29,7 +29,7 @@ export function Dashboard(props) {
       setMaxLifts(data)
     }
     checkMaxLifts();
-  }, [])
+  }, [dashboardUser])
 
 
 
