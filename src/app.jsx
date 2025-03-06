@@ -24,7 +24,7 @@ export default function App() {
             <nav>
                 <menu>
                     <li><NavLink to=''>Login</NavLink></li>
-                    {authState == AuthState.Authenticated && <li><NavLink to='dashboard'>Dashboard</NavLink></li>}
+                    {authState == AuthState.Authenticated && <li><NavLink to={`dashboard/${userName}`}>Dashboard</NavLink></li>}
                     {authState == AuthState.Authenticated && <li><NavLink to="workout">Log Workout</NavLink></li> }
                 </menu>
             </nav>
@@ -49,7 +49,7 @@ export default function App() {
                 }
                 exact
             />
-            <Route path='/dashboard' element={<Dashboard userName={userName} />} />
+            <Route path='/dashboard/:dashboardUser' element={<Dashboard userName={userName} />} />
             <Route path='/workout' element={<Workout userName={userName}/>} />
             <Route path='*' element={<NotFound />} />
         </Routes>

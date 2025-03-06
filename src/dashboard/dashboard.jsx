@@ -1,11 +1,11 @@
 import React from 'react';
 import './dashboard.css'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import { WorkoutLog } from './workoutLog';
 
 export function Dashboard(props) {
   const userName = props.userName;
-
+  const {dashboardUser} = useParams();
   const [workoutLogs , setWorkoutLogs] = React.useState([]);
   const maxBench = localStorage.getItem(`${userName}-maxBench`) || 0;
   const maxSquat = localStorage.getItem(`${userName}-maxSquat`) || 0;
@@ -15,7 +15,7 @@ export function Dashboard(props) {
   React.useEffect(() => {
 
     const fetchWorkouts = async() => {
-      const response = await fetch('/api/workouts', {
+      const response = await fetch(`/api/workouts/${dashboardUser}`, {
         method: 'GET'
       })
       const data = await response.json();
@@ -23,7 +23,8 @@ export function Dashboard(props) {
       
     }
     fetchWorkouts();
-  }, [])
+    console.log(dashboardUser)
+  }, [dashboardUser])
 
 
 
@@ -54,7 +55,7 @@ export function Dashboard(props) {
         </NavLink>
     </div>
     <div className='workout-logs'>
-    {workoutLogs.length > 0 ? (
+    {workoutLogs?.length > 0 ? (
                      workoutLogs.map((workout) => (
                       <WorkoutLog 
                           key={workout.timestamp} 

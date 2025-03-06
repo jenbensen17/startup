@@ -98,7 +98,7 @@ export function Workout(props) {
     <main className='workout-page'>
     <div className='record-form'>
         <h2>LOG YOUR WORKOUT HERE</h2>
-        <NavLink to="../dashboard"> 
+        <NavLink to={`../dashboard/${userName}`}> 
             <button type="button"
             id='save-button'
             onClick={saveWorkout}

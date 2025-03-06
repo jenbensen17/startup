@@ -113,14 +113,13 @@ apiRouter.post('/workouts', verifyAuth, async (req, res) => {
 
 
 //Get workouts
-apiRouter.get('/workouts', verifyAuth, async(req, res) => {
-    console.log("calling get")
-    const user = await findUser('token', req.cookies[authCookieName]);
+apiRouter.get('/workouts/:userName', verifyAuth, async(req, res) => {
+    const user = req.params.userName;
     if(!user) {
         return res.status(404).send({msg: 'User not found'})
     }
-
-    const userWorkouts = workouts[user.email]
+    console.log("fetching workouts from: ", user)
+    const userWorkouts = workouts[user]
     res.status(200).send({userWorkouts: userWorkouts})
 })
 
@@ -137,7 +136,7 @@ apiRouter.put('/max-lifts', verifyAuth, async (req, res) => {
     if(!req.body.maxLifts) {
         return res.status(400).send({msg: 'Invalid lift data'});
     }
-    
+    console.log("workouts stored to", user.email)
     maxLifts[user.email] = req.body.maxLifts;
     res.status(200).send({msg: 'Max lifts updated'});    
 })
