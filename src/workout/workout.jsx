@@ -2,8 +2,9 @@ import React from 'react';
 import './workout.css'
 import { ExerciseRecord } from './exerciseRecord';
 import { SearchExercises } from './searchExercises';
-import { NavLink } from 'react-router-dom';
 import { fetchMaxLifts } from '../util/maxLifts';
+import { useNavigate } from 'react-router-dom';
+
 
 export function Workout(props) {
     const userName = props.userName;
@@ -12,10 +13,11 @@ export function Workout(props) {
     const [exerciseSets, setExerciseSets] = React.useState({})
     const [maxLifts, setMaxLifts] = React.useState({ Bench: 0, Squat: 0, Deadlift: 0 });
 
+    const navigate = useNavigate();
 
     React.useEffect(() => {
       async function checkMaxLifts() {
-        const data = await fetchMaxLifts();
+        const data = await fetchMaxLifts(userName);
         setMaxLifts(data)
       }
       checkMaxLifts();
@@ -60,7 +62,10 @@ export function Workout(props) {
         if(!response.ok) {
           throw new Error('Failed to save workout')
         }
-        updateMaxLifts(workoutData)
+        await updateMaxLifts(workoutData)
+
+       navigate(`/dashboard/${userName}`)
+
       } catch (error) {
         console.error('Error saving workout:', error);
       }
@@ -98,13 +103,11 @@ export function Workout(props) {
     <main className='workout-page'>
     <div className='record-form'>
         <h2>LOG YOUR WORKOUT HERE</h2>
-        <NavLink to={`../dashboard/${userName}`}> 
             <button type="button"
             id='save-button'
             onClick={saveWorkout}
             disabled={exercises.length < 1}
             >Save and Record</button>
-        </NavLink>
         {exercises.map((exercise, index) => (
           <ExerciseRecord key={index} exerciseName={exercise} onSetChange= {(sets) => handleSetChange(exercise, sets)} />
         ))}

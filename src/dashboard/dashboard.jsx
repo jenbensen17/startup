@@ -2,14 +2,13 @@ import React from 'react';
 import './dashboard.css'
 import { NavLink, useParams } from 'react-router-dom';
 import { WorkoutLog } from './workoutLog';
+import { fetchMaxLifts } from '../util/maxLifts';
 
 export function Dashboard(props) {
   const userName = props.userName;
   const {dashboardUser} = useParams();
   const [workoutLogs , setWorkoutLogs] = React.useState([]);
-  const maxBench = localStorage.getItem(`${userName}-maxBench`) || 0;
-  const maxSquat = localStorage.getItem(`${userName}-maxSquat`) || 0;
-  const maxDeadlift = localStorage.getItem(`${userName}-maxDeadlift`) || 0;
+  const [maxLifts, setMaxLifts] = React.useState({ Bench: 0, Squat: 0, Deadlift: 0 });
 
 
   React.useEffect(() => {
@@ -24,7 +23,15 @@ export function Dashboard(props) {
     }
     fetchWorkouts();
     console.log(dashboardUser)
-  }, [dashboardUser])
+
+    async function checkMaxLifts() {
+      const data = await fetchMaxLifts(dashboardUser);
+      setMaxLifts(data)
+    }
+    checkMaxLifts();
+  }, [])
+
+
 
 
 
@@ -43,9 +50,9 @@ export function Dashboard(props) {
               <th>Deadlift</th>
               </tr>
               <tr>
-              <td>{maxBench} lbs</td>
-              <td>{maxSquat} lbs</td>
-              <td>{maxDeadlift} lbs</td>
+              <td>{maxLifts.Bench} lbs</td>
+              <td>{maxLifts.Squat} lbs</td>
+              <td>{maxLifts.Deadlift} lbs</td>
               </tr>
             </tbody>
           </table>
