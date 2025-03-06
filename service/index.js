@@ -107,7 +107,7 @@ apiRouter.post('/workouts', verifyAuth, async (req, res) => {
         likedWorkout: false,
     }
 
-    workouts[user.email].push(workout);
+    workouts[user.email].unshift(workout);
     res.status(200).send(workout);
 })
 
