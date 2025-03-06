@@ -77,9 +77,9 @@ export function Workout(props) {
         exercise.sets.forEach((set) => {
           if (exercise.name === "Bench Press" && set.weight > newMaxLifts.Bench) {
             newMaxLifts.Bench = set.weight;
-          } else if (exercise.name === "Squat" && set.weight > newMaxLifts.Squat) {
+          } else if (exercise.name === "Squats" && set.weight > newMaxLifts.Squat) {
             newMaxLifts.Squat = set.weight;
-          } else if (exercise.name === "Deadlift" && set.weight > newMaxLifts.Deadlift) {
+          } else if (exercise.name === "Deadlifts" && set.weight > newMaxLifts.Deadlift) {
             newMaxLifts.Deadlift = set.weight;
           }
         });

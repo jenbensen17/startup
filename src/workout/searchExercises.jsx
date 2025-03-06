@@ -4,7 +4,7 @@ import './search.css'
 export function SearchExercises(props) {
     const [exercises, setExercises] = React.useState([]);
     const [search, setSearch] = React.useState("");
-    const [loading, setLoading] = React.useState(true);
+    const [loading, setLoading] = React.useState(false);
 
     const fetchExercises = async (term) => {
             setLoading(true);
@@ -13,7 +13,6 @@ export function SearchExercises(props) {
 
             setExercises(data.suggestions)
             console.log(data.suggestions)
-            //console.log(exercises)
             setLoading(false);
     }
 
