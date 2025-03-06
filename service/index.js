@@ -118,7 +118,6 @@ apiRouter.get('/workouts/:userName', verifyAuth, async(req, res) => {
     if(!user) {
         return res.status(404).send({msg: 'User not found'})
     }
-    console.log("fetching workouts from: ", user)
     const userWorkouts = workouts[user]
     res.status(200).send({userWorkouts: userWorkouts})
 })
@@ -127,7 +126,6 @@ apiRouter.get('/workouts/:userName', verifyAuth, async(req, res) => {
 //Get max lifts
 apiRouter.get('/max-lifts/:userName', verifyAuth, async(req, res) => {
     const user = req.params.userName;
-    console.log("fetching max lifts for: ", user)
     res.send(maxLifts[user] || { Bench: 0, Squat: 0, Deadlift: 0 });
 })
 
@@ -137,7 +135,6 @@ apiRouter.put('/max-lifts', verifyAuth, async (req, res) => {
     if(!req.body.maxLifts) {
         return res.status(400).send({msg: 'Invalid lift data'});
     }
-    console.log("workouts stored to", user.email)
     maxLifts[user.email] = req.body.maxLifts;
     res.status(200).send({msg: 'Max lifts updated'});    
 })
@@ -166,8 +163,6 @@ apiRouter.post('/workouts/:userName/:workoutTimestamp/comment', verifyAuth, asyn
 
     const { userName, workoutTimestamp } = req.params;
     const user = await findUser('token', req.cookies[authCookieName]);
-
-    console.log(user, "adding comment to workout by ", userName)
 
     const workout = workouts[userName].find(workout => workout.timestamp === workoutTimestamp);
 

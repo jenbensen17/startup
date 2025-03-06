@@ -12,7 +12,6 @@ export function SearchExercises(props) {
             const data = await response.json();
 
             setExercises(data.suggestions)
-            console.log(data.suggestions)
             setLoading(false);
     }
 

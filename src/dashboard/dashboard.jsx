@@ -22,7 +22,6 @@ export function Dashboard(props) {
       
     }
     fetchWorkouts();
-    console.log(dashboardUser)
 
     async function checkMaxLifts() {
       const data = await fetchMaxLifts(dashboardUser);
