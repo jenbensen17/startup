@@ -28,38 +28,62 @@ export function WorkoutLog(props) {
     localStorage.setItem(workoutID, JSON.stringify(workoutData));
 }, [comments, numLikes, likedWorkout, exercises, workoutID]);
 
-    const handleCommentButton = () => {
+    const handleCommentButton = async () => {
         if (newComment.trim() === "") return;
-        setComments([...comments, { user: userName, text: newComment }]);
+
+        const response = await fetch(`/api/workouts/${userName}/${workoutTimestamp}/comment`,{
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ comment: newComment }),
+      });
+      if (response.ok) {
+        const { comments } = await response.json();
+        setComments(comments);
         setNewComment("");
+      } 
       };
 
-    useEffect(() => {
-      setInterval(() => {
-        const randomChance = Math.floor(Math.random() * 100);
+    const handleLikeButton = async () => {
+      const response = await fetch(`/api/workouts/${userName}/${workoutTimestamp}/like`, {
+        method: 'POST',
+        credentials: 'include',
+      });
+
+      if (response.ok) {
+        const { numLikes, likedWorkout } = await response.json();
+        setNumLikes(numLikes);
+        setLikedWorkout(likedWorkout);
+      }
+    }
+
+    // useEffect(() => {
+    //   setInterval(() => {
+    //     const randomChance = Math.floor(Math.random() * 100);
         
-        if (randomChance < 33) {
-          setUsers((prevUsers) => {
-            const newUsers = new Set(prevUsers);
-            const user = `User-${Math.floor(Math.random() * 100)}`;
-            newUsers.add(user);
-            return newUsers;
-          })
+    //     if (randomChance < 33) {
+    //       setUsers((prevUsers) => {
+    //         const newUsers = new Set(prevUsers);
+    //         const user = `User-${Math.floor(Math.random() * 100)}`;
+    //         newUsers.add(user);
+    //         return newUsers;
+    //       })
             
-            setComments((prevComments) => [
-              ...prevComments,
-              { user: `User-${Math.floor(Math.random() * 100)}`, text: "Beast mode!" }
-            ])
-        }
-      }, 1000);
+    //         setComments((prevComments) => [
+    //           ...prevComments,
+    //           { user: `User-${Math.floor(Math.random() * 100)}`, text: "Beast mode!" }
+    //         ])
+    //     }
+    //   }, 1000);
   
-      setInterval(() => {
-        const randomChance = Math.floor(Math.random() * 100);
-        if (randomChance < 33) {
-          setNumLikes((prevLikes) => prevLikes + 1);
-        }
-      }, 1000);
-    }, []);
+    //   setInterval(() => {
+    //     const randomChance = Math.floor(Math.random() * 100);
+    //     if (randomChance < 33) {
+    //       setNumLikes((prevLikes) => prevLikes + 1);
+    //     }
+    //   }, 1000);
+    // }, []);
 
 
 
@@ -82,13 +106,8 @@ export function WorkoutLog(props) {
         <div className="social">
           <div className="like">
             <button
-            onClick={() => {
-              setNumLikes((prevLikes) => (likedWorkout ? prevLikes - 1 : prevLikes + 1));
-                            setLikedWorkout((prevLiked) => !prevLiked);
-            }}
-            
-            >
-                <img src="/thumbs_up.png"/>
+            onClick={handleLikeButton}  >
+              <img src="/thumbs_up.png"/>
             </button>
             <span>{numLikes}</span>
           </div>

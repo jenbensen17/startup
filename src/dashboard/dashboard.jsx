@@ -75,7 +75,7 @@ export function Dashboard(props) {
                      workoutLogs.map((workout) => (
                       <WorkoutLog 
                           key={workout.timestamp} 
-                          userName={userName} 
+                          userName={dashboardUser} 
                           workoutDate={workout.date} 
                           workoutTimestamp={workout.timestamp} 
                           exercises = {workout.exercises}

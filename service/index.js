@@ -142,6 +142,40 @@ apiRouter.put('/max-lifts', verifyAuth, async (req, res) => {
     res.status(200).send({msg: 'Max lifts updated'});    
 })
 
+//Add Likes
+apiRouter.post('/workouts/:userName/:workoutTimestamp/like', verifyAuth, async(req, res) => {
+    const {userName, workoutTimestamp} = req.params;
+    if(!workouts[userName]) {
+        return res.status(404).send({msg: "user not found"})
+    }
+
+    const workout = workouts[userName].find(workout => workout.timestamp === workoutTimestamp);
+
+    if(workout.likedWorkout) {
+        workout.numLikes-=1;
+    } else {
+        workout.numLikes +=1
+    }
+
+    workout.likedWorkout = !workout.likedWorkout
+    res.status(200).send({ numLikes: workout.numLikes, likedWorkout: workout.likedWorkout });
+})
+
+//add comments
+apiRouter.post('/workouts/:userName/:workoutTimestamp/comment', verifyAuth, async (req, res) => {
+
+    const { userName, workoutTimestamp } = req.params;
+    const user = await findUser('token', req.cookies[authCookieName]);
+
+    console.log(user, "adding comment to workout by ", userName)
+
+    const workout = workouts[userName].find(workout => workout.timestamp === workoutTimestamp);
+
+    const newComment = req.body.comment;
+    workout.comments.push({ user: user.email, text: newComment });
+    res.status(200).send({ comments: workout.comments });
+})
+
 
 async function findUser(field, value) {
     if (!value) return null;
