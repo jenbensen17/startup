@@ -32,7 +32,7 @@ export function Dashboard(props) {
   return (
     <main className="dashboard-page">
     <div className="user-info">
-      <span className="username"> User: {userName}</span>
+      <span className="username"> User: {dashboardUser}</span>
       <div className="max-lifts">
           <table id="max-lifts">
             <caption>Max Lifts</caption>
@@ -50,9 +50,18 @@ export function Dashboard(props) {
             </tbody>
           </table>
         </div>
-        <NavLink to='../workout'>
+        {userName === dashboardUser ? (
+          <NavLink to='../workout'>
           <button>Log New Workout</button>
         </NavLink>
+        ) : (
+          <NavLink to={`../dashboard/${userName}`}>
+            <button>Return to My Dashboard</button>
+          </NavLink>
+        )
+
+        }
+        
     </div>
     <div className='workout-logs'>
     {workoutLogs?.length > 0 ? (
