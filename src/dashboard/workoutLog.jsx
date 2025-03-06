@@ -1,7 +1,7 @@
 import React from 'react';
 import { Exercise } from './exercise';
 import { useEffect } from 'react';
-
+import { NavLink } from 'react-router-dom';
 
 export function WorkoutLog(props) {
     const userName = props.userName;
@@ -134,8 +134,12 @@ export function WorkoutLog(props) {
           <h3>Comments</h3>
           <ul>
           {comments && comments.map((comment, index) => (
-                <li key={index}>
-                    {comment.user}: <span>{comment.text}</span>
+            <li key={index}>
+            <NavLink
+            to={`../dashboard/${comment.user}`}
+            > 
+                    {comment.user}
+                    </NavLink>: <span>{comment.text}</span>
                 </li>
             ))}
         </ul>
