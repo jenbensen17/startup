@@ -25,7 +25,7 @@ export function WorkoutLog(props) {
         numLikes,
         likedWorkout
     };
-    localStorage.setItem(workoutID, JSON.stringify(workoutData));
+    console.log(numLikes)
 }, [comments, numLikes, likedWorkout, exercises, workoutID]);
 
     const handleCommentButton = async () => {

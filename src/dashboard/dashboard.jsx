@@ -78,7 +78,7 @@ export function Dashboard(props) {
                           workoutDate={workout.date} 
                           workoutTimestamp={workout.timestamp} 
                           exercises = {workout.exercises}
-                          likedWorkout = {workout.likedWorkout}
+                          likedBy = {workout.likedBy}
                           numLikes = {workout.numLikes}
                           comments = {workout.comments}
                       />

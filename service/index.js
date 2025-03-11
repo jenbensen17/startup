@@ -8,8 +8,8 @@ const authCookieName = 'token';
 
 // The users are saved in memory and disappear whenever the service is restarted.
 let users = [];
-let workouts = [];
-let maxLifts = [];
+let workouts = {};
+let maxLifts = {};
 
 
 
@@ -103,6 +103,7 @@ apiRouter.post('/workouts', verifyAuth, async (req, res) => {
         timestamp: req.body.timestamp,
         exercises: req.body.exercises,
         comments: [],
+        likedBy: [],
         numLikes: 0,
         likedWorkout: false,
     }
@@ -142,20 +143,21 @@ apiRouter.put('/max-lifts', verifyAuth, async (req, res) => {
 //Add Likes
 apiRouter.post('/workouts/:userName/:workoutTimestamp/like', verifyAuth, async(req, res) => {
     const {userName, workoutTimestamp} = req.params;
+    const actingUser = await findUser('token', req.cookies[authCookieName]);
     if(!workouts[userName]) {
         return res.status(404).send({msg: "user not found"})
     }
 
     const workout = workouts[userName].find(workout => workout.timestamp === workoutTimestamp);
 
-    if(workout.likedWorkout) {
-        workout.numLikes-=1;
-    } else {
-        workout.numLikes +=1
-    }
+   if(!workout.likedBy.includes(actingUser)) {
+    workout.likedBy.push(actingUser); 
+   } else {
+    workout.likedBy = workout.likedBy.filter(user => user !== actingUser);
+   }
+   workout.numLikes = workout.likedBy.length
 
-    workout.likedWorkout = !workout.likedWorkout
-    res.status(200).send({ numLikes: workout.numLikes, likedWorkout: workout.likedWorkout });
+    res.status(200).send({ numLikes: workout.numLikes});
 })
 
 //add comments
