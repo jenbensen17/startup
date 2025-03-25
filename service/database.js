@@ -40,7 +40,7 @@ async function addWorkout(workout) {
 }
 
 async function getWorkouts(userEmail) {
-    return workoutCollection.find({userEmail}).toArray();
+    return workoutCollection.find({userEmail}).sort({ timestamp: -1 }).toArray();
 }
 
 async function findSpecificWorkout(userEmail, timestamp) {
