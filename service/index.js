@@ -100,6 +100,7 @@ apiRouter.post('/workouts', verifyAuth, async (req, res) => {
 
 
     const workout = {
+        userEmail: user.email,
         date: req.body.date,
         timestamp: req.body.timestamp,
         exercises: req.body.exercises,
@@ -120,7 +121,7 @@ apiRouter.get('/workouts/:userName', verifyAuth, async(req, res) => {
     if(!user) {
         return res.status(404).send({msg: 'User not found'})
     }
-    const userWorkouts = workouts[user]
+    const userWorkouts = await DB.getWorkouts(user)
     res.status(200).send({userWorkouts: userWorkouts})
 })
 
