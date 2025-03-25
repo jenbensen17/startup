@@ -171,10 +171,14 @@ apiRouter.post('/workouts/:userName/:workoutTimestamp/comment', verifyAuth, asyn
     const { userName, workoutTimestamp } = req.params;
     const user = await findUser('token', req.cookies[authCookieName]);
 
-    const workout = workouts[userName].find(workout => workout.timestamp === workoutTimestamp);
-
+    const workout = await DB.findSpecificWorkout(userName, workoutTimestamp);
+    if (!workout) {
+        return res.status(404).send({ msg: "Workout not found" });
+    }
     const newComment = req.body.comment;
-    workout.comments.push({ user: user.email, text: newComment });
+
+    await DB.updateWorkoutComments(workout._id, newComment);
+
     res.status(200).send({ comments: workout.comments });
 })
 

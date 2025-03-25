@@ -54,6 +54,10 @@ async function updateWorkoutLikes(id, likedBy, numLikes) {
     )
 }
 
+async function updateWorkoutComments(id, comment) {
+    workoutCollection.updateOne({_id: id}, {$push: {comments: comment}})
+}
+
 async function getMaxLifts(userEmail) {
     return maxLiftsCollection.findOne({userEmail});
 }
@@ -72,5 +76,6 @@ module.exports = {
     getMaxLifts, 
     updateMaxLifts,
     findSpecificWorkout,
-    updateWorkoutLikes 
+    updateWorkoutLikes,
+    updateWorkoutComments 
 };
