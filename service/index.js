@@ -175,9 +175,9 @@ apiRouter.post('/workouts/:userName/:workoutTimestamp/comment', verifyAuth, asyn
     if (!workout) {
         return res.status(404).send({ msg: "Workout not found" });
     }
-    const newComment = req.body.comment;
-
-    await DB.updateWorkoutComments(workout._id, newComment);
+    const newComment = {user: user.email, text: req.body.comment};
+    workout.comments.push(newComment);
+    await DB.updateWorkoutComments(workout._id, workout.comments);
 
     res.status(200).send({ comments: workout.comments });
 })

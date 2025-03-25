@@ -54,8 +54,8 @@ async function updateWorkoutLikes(id, likedBy, numLikes) {
     )
 }
 
-async function updateWorkoutComments(id, comment) {
-    workoutCollection.updateOne({_id: id}, {$push: {comments: comment}})
+async function updateWorkoutComments(id, comments) {
+    workoutCollection.updateOne({_id: id}, {$set: {comments: comments}})
 }
 
 async function getMaxLifts(userEmail) {

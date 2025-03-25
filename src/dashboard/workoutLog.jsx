@@ -25,7 +25,6 @@ export function WorkoutLog(props) {
         numLikes,
         likedWorkout
     };
-    console.log(numLikes)
 }, [comments, numLikes, likedWorkout, exercises, workoutID]);
 
     const handleCommentButton = async () => {
