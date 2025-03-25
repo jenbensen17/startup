@@ -97,9 +97,7 @@ apiRouter.post('/workouts', verifyAuth, async (req, res) => {
         return res.status(400).send({msg: 'Invalid workout data'})
     }
 
-    if(!workouts[user.email]) {
-        workouts[user.email] = [];
-    }
+
 
     const workout = {
         date: req.body.date,
@@ -111,7 +109,7 @@ apiRouter.post('/workouts', verifyAuth, async (req, res) => {
         likedWorkout: false,
     }
 
-    workouts[user.email].unshift(workout);
+    await DB.addWorkout(workout);
     res.status(200).send(workout);
 })
 
@@ -180,7 +178,10 @@ apiRouter.post('/workouts/:userName/:workoutTimestamp/comment', verifyAuth, asyn
 async function findUser(field, value) {
     if (!value) return null;
   
-    return users.find((u) => u[field] === value);
+    if (field === 'token') {
+        return DB.getUserByToken(value);
+      }
+      return DB.getUser(value);
   }
 
 async function createUser(email, password) {
