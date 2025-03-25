@@ -63,7 +63,7 @@ async function getMaxLifts(userEmail) {
 }
 
 async function updateMaxLifts(userEmail, maxLifts) {
-    return maxLiftsCollection.updateOne({userEmail}, {$set: maxLifts}, {upsert: true});
+    return maxLiftsCollection.updateOne({userEmail: userEmail}, {$set: {Bench: maxLifts.Bench, Squat: maxLifts.Squat, Deadlift: maxLifts.Deadlift}},  { upsert: true });
 }
 
 module.exports = { 
