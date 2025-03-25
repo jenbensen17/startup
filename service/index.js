@@ -139,7 +139,6 @@ apiRouter.put('/max-lifts', verifyAuth, async (req, res) => {
     if(!req.body.maxLifts) {
         return res.status(400).send({msg: 'Invalid lift data'});
     }
-    console.log(req.body.maxLifts)
     await DB.updateMaxLifts(user.email, req.body.maxLifts)
     res.status(200).send({msg: 'Max lifts updated'});    
 })
