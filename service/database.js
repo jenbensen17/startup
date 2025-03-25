@@ -4,9 +4,9 @@ const config = require('./dbConfig.json');
 const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}`;
 const client = new MongoClient(url);
 const db = client.db('defcor');
-const userCollection = db.collection('user')
-const workoutCollection = db.collection('workout')
-const maxLiftsCollection = db.collection('max-lifts')
+const userCollection = db.collection('user');
+const workoutCollection = db.collection('workout');
+const maxLiftsCollection = db.collection('max-lifts');
 
 // This will asynchronously test the connection and exit the process if it fails
 (async function testConnection() {
