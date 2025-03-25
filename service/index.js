@@ -129,7 +129,8 @@ apiRouter.get('/workouts/:userName', verifyAuth, async(req, res) => {
 //Get max lifts
 apiRouter.get('/max-lifts/:userName', verifyAuth, async(req, res) => {
     const user = req.params.userName;
-    res.send(maxLifts[user] || { Bench: 0, Squat: 0, Deadlift: 0 });
+    const maxLifts = await DB.getMaxLifts(user)
+    res.send(maxLifts || { Bench: 0, Squat: 0, Deadlift: 0 });
 })
 
 //Update Max Lifts - use put because we are updating records
@@ -138,7 +139,7 @@ apiRouter.put('/max-lifts', verifyAuth, async (req, res) => {
     if(!req.body.maxLifts) {
         return res.status(400).send({msg: 'Invalid lift data'});
     }
-    maxLifts[user.email] = req.body.maxLifts;
+    await DB.updateMaxLifts(user.email, req.body.maxLifts)
     res.status(200).send({msg: 'Max lifts updated'});    
 })
 
