@@ -43,6 +43,17 @@ async function getWorkouts(userEmail) {
     return workoutCollection.find({userEmail}).toArray();
 }
 
+async function findSpecificWorkout(userEmail, timestamp) {
+   return workoutCollection.findOne({userEmail: userEmail, timestamp: timestamp})
+}
+
+async function updateWorkoutLikes(id, likedBy, numLikes) {
+    workoutCollection.updateOne(
+        { _id: id },
+        { $set: { likedBy: likedBy, numLikes: numLikes } }
+    )
+}
+
 async function getMaxLifts(userEmail) {
     return maxLiftsCollection.findOne({userEmail});
 }
@@ -59,5 +70,7 @@ module.exports = {
     addWorkout, 
     getWorkouts, 
     getMaxLifts, 
-    updateMaxLifts 
+    updateMaxLifts,
+    findSpecificWorkout,
+    updateWorkoutLikes 
 };

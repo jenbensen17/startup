@@ -147,18 +147,20 @@ apiRouter.put('/max-lifts', verifyAuth, async (req, res) => {
 apiRouter.post('/workouts/:userName/:workoutTimestamp/like', verifyAuth, async(req, res) => {
     const {userName, workoutTimestamp} = req.params;
     const actingUser = await findUser('token', req.cookies[authCookieName]);
-    if(!workouts[userName]) {
-        return res.status(404).send({msg: "user not found"})
+
+    const workout = await DB.findSpecificWorkout(userName, workoutTimestamp);
+    if (!workout) {
+        return res.status(404).send({ msg: "Workout not found" });
     }
 
-    const workout = workouts[userName].find(workout => workout.timestamp === workoutTimestamp);
-
-   if(!workout.likedBy.includes(actingUser)) {
-    workout.likedBy.push(actingUser); 
+   if(!workout.likedBy.includes(actingUser.email)) {
+    workout.likedBy.push(actingUser.email); 
    } else {
-    workout.likedBy = workout.likedBy.filter(user => user !== actingUser);
+    workout.likedBy = workout.likedBy.filter(user => user !== actingUser.email);
    }
-   workout.numLikes = workout.likedBy.length
+   workout.numLikes = workout.likedBy.length;
+
+   await DB.updateWorkoutLikes(workout._id, workout.likedBy, workout.numLikes);
 
     res.status(200).send({ numLikes: workout.numLikes});
 })
