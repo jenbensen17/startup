@@ -7,11 +7,6 @@ const DB = require('./database.js')
 
 const authCookieName = 'token';
 
-// The users are saved in memory and disappear whenever the service is restarted.
-let users = [];
-let workouts = {};
-let maxLifts = {};
-
 
 
 // The service port. In production the front-end code is statically hosted by the service on the same port.
