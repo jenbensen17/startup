@@ -1,10 +1,11 @@
 import React from "react";
 import "./users.css";
+import { useNavigate } from 'react-router-dom';
 
 import { DashboardEvent, DashboardNotifier } from "./dashboardNotifier";
 
 export function Users(props) {
-    const userName = props.userName;
+    const navigate = useNavigate();
 
     const [events, setEvents] = React.useState([]);
 
@@ -33,7 +34,13 @@ export function Users(props) {
     
           messageArray.push(
             <div className="message" key={i}>
-              <span>{event.from.split('@')[0]}</span>
+              <span
+              onClick={() => {
+                navigate(`../dashboard/${event.from}`);
+                window.location.reload();
+              }}
+              style={{ cursor: 'pointer', color: '#0073e6', fontWeight: 'bold' }}
+              >{event.from.split('@')[0]}</span>
               {message}
             </div>
           );
