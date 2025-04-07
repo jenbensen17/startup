@@ -24,8 +24,8 @@ export function Users(props) {
           let message = 'unknown';
           if (event.type === DashboardEvent.Comment) {
             message = ` commented on a workout by ${event.value}`;
-          } else if (event.type === DashboardEvent.Post) {
-            message = `started a new game`;
+          } else if (event.type === DashboardEvent.Like) {
+            message = ` liked a workout by ${event.value}`;
           } else if (event.type === DashboardEvent.Post) {
             message = "your mom";
           }

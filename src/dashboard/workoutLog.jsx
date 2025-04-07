@@ -52,11 +52,14 @@ export function WorkoutLog(props) {
         method: 'POST',
         credentials: 'include',
       });
-
+      const oldNumLikes = numLikes;
       if (response.ok) {
         const { numLikes, likedWorkout } = await response.json();
         setNumLikes(numLikes);
         setLikedWorkout(likedWorkout);
+        if(numLikes > oldNumLikes) {
+        DashboardNotifier.broadcastEvent(interactingUser, DashboardEvent.Like, dashboardUser)
+        }
       }
     }
 
