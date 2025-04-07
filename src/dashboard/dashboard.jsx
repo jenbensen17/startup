@@ -3,6 +3,7 @@ import './dashboard.css'
 import { NavLink, useParams } from 'react-router-dom';
 import { WorkoutLog } from './workoutLog';
 import { fetchMaxLifts } from '../util/maxLifts';
+import { Users } from './users';
 
 export function Dashboard(props) {
   const userName = props.userName;
@@ -55,6 +56,7 @@ export function Dashboard(props) {
               </tr>
             </tbody>
           </table>
+
         </div>
         {userName === dashboardUser ? (
           <NavLink to='../workout'>
@@ -67,7 +69,7 @@ export function Dashboard(props) {
         )
 
         }
-        
+        <Users userName={props.userName}/>
     </div>
     <div className='workout-logs'>
     {workoutLogs?.length > 0 ? (
