@@ -4,6 +4,7 @@ import { ExerciseRecord } from './exerciseRecord';
 import { SearchExercises } from './searchExercises';
 import { fetchMaxLifts } from '../util/maxLifts';
 import { useNavigate } from 'react-router-dom';
+import { DashboardNotifier, DashboardEvent } from '../dashboard/dashboardNotifier';
 
 
 export function Workout(props) {
@@ -63,6 +64,9 @@ export function Workout(props) {
           throw new Error('Failed to save workout')
         }
         await updateMaxLifts(workoutData)
+
+        DashboardNotifier.broadcastEvent(userName, DashboardEvent.Post, {})
+
 
        navigate(`/dashboard/${userName}`)
 

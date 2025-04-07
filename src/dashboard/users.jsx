@@ -27,13 +27,14 @@ export function Users(props) {
           } else if (event.type === DashboardEvent.Like) {
             message = ` liked a workout by ${event.value}`;
           } else if (event.type === DashboardEvent.Post) {
-            message = "your mom";
+            message = " posted a new workout";
           }
     
           messageArray.push(
-            <div key={i} className='event'>
-              <span className={'player-event'}>{event.from.split('@')[0]}</span>
+            <div key={i}>
+              <span>{event.from.split('@')[0]}</span>
               {message}
+              <br></br>
             </div>
           );
         }
@@ -41,9 +42,9 @@ export function Users(props) {
       }
     
       return (
-        <div className='players'>
-          <span className='player-name'>{userName}</span>
-          <div id='player-messages'>{createMessageArray()}</div>
+        <div>
+            LIVE FEED:
+          <div>{createMessageArray()}</div>
         </div>
       );
 }
