@@ -2,13 +2,15 @@ import React from 'react';
 import { Exercise } from './exercise';
 import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+import { DashboardEvent, DashboardNotifier } from './dashboardNotifier';
 
 export function WorkoutLog(props) {
-    const userName = props.userName;
+    const interactingUser = props.interactingUser;
+    const dashboardUser = props.dashboardUser;
     const workoutDate = props.workoutDate;
     const workoutTimestamp = props.workoutTimestamp;
     const exercises = props.exercises;
-    const workoutID = `${userName}-workout-${workoutTimestamp}`;
+    const workoutID = `${dashboardUser}-workout-${workoutTimestamp}`;
     const [numLikes, setNumLikes] = React.useState(props.numLikes);
     const [likedWorkout, setLikedWorkout] = React.useState(props.likedWorkout);
     const [comments, setComments] = React.useState(props.comments);
@@ -30,7 +32,7 @@ export function WorkoutLog(props) {
     const handleCommentButton = async () => {
         if (newComment.trim() === "") return;
 
-        const response = await fetch(`/api/workouts/${userName}/${workoutTimestamp}/comment`,{
+        const response = await fetch(`/api/workouts/${dashboardUser}/${workoutTimestamp}/comment`,{
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',
@@ -41,11 +43,12 @@ export function WorkoutLog(props) {
         const { comments } = await response.json();
         setComments(comments);
         setNewComment("");
+        DashboardNotifier.broadcastEvent(interactingUser, DashboardEvent.Comment, dashboardUser)
       } 
       };
 
     const handleLikeButton = async () => {
-      const response = await fetch(`/api/workouts/${userName}/${workoutTimestamp}/like`, {
+      const response = await fetch(`/api/workouts/${dashboardUser}/${workoutTimestamp}/like`, {
         method: 'POST',
         credentials: 'include',
       });

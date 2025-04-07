@@ -22,8 +22,8 @@ export function Users(props) {
         const messageArray = [];
         for (const [i, event] of events.entries()) {
           let message = 'unknown';
-          if (event.type === DashboardEvent.Post) {
-            message = `scored ${event.value}`;
+          if (event.type === DashboardEvent.Comment) {
+            message = ` commented on a workout by ${event.value}`;
           } else if (event.type === DashboardEvent.Post) {
             message = `started a new game`;
           } else if (event.type === DashboardEvent.Post) {

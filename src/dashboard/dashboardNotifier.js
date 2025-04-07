@@ -49,7 +49,7 @@ class DashboardEventNotifier {
     
       receiveEvent(event) {
         this.events.push(event);
-    
+        console.log(event)
         this.events.forEach((e) => {
           this.handlers.forEach((handler) => {
             handler(e);
