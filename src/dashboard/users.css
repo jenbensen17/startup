@@ -1,0 +1,23 @@
+
+  
+  h1 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: 0;
+    padding: 40px 0;
+
+  }
+  
+  .message {
+    width: 100%;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    text-align: left;
+  }
+  
+  .message span {
+    font-weight: bold;
+    color: #0073e6;
+  }
+  

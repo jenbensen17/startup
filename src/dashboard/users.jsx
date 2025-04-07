@@ -1,4 +1,5 @@
 import React from "react";
+import "./users.css";
 
 import { DashboardEvent, DashboardNotifier } from "./dashboardNotifier";
 
@@ -31,10 +32,9 @@ export function Users(props) {
           }
     
           messageArray.push(
-            <div key={i}>
+            <div className="message" key={i}>
               <span>{event.from.split('@')[0]}</span>
               {message}
-              <br></br>
             </div>
           );
         }
@@ -42,8 +42,8 @@ export function Users(props) {
       }
     
       return (
-        <div>
-            LIVE FEED:
+        <div className="live-feed">
+            <h1>LIVE FEED:</h1>
           <div>{createMessageArray()}</div>
         </div>
       );
